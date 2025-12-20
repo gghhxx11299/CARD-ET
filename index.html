@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Card.et | Ultra-Premium Networking</title>
+    <title>Smart Card.et | Premium Networking Ethiopia</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
@@ -16,14 +16,12 @@
             width: 100%;
         }
 
-        /* Glassmorphism Navigation */
         .glass-nav { 
             background: rgba(255, 255, 255, 0.85); 
             backdrop-filter: blur(15px); 
             -webkit-backdrop-filter: blur(15px);
         }
 
-        /* Animated Text Gradient */
         .text-gradient {
             background: linear-gradient(135deg, #1e293b 0%, #2563eb 50%, #7c3aed 100%);
             -webkit-background-clip: text;
@@ -33,7 +31,6 @@
         }
         @keyframes textFlow { to { background-position: 200% center; } }
 
-        /* Premium Interactions */
         .premium-card {
             transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
         }
@@ -44,7 +41,6 @@
             }
         }
 
-        /* Responsive Modal */
         .modal { 
             opacity: 0; pointer-events: none; 
             transition: all 0.4s ease;
@@ -52,11 +48,9 @@
         }
         .modal.active { opacity: 1; pointer-events: auto; }
         
-        /* Utility for reveal */
         .reveal { opacity: 0; transform: translateY(20px); transition: all 0.6s ease-out; }
         .reveal.visible { opacity: 1; transform: translateY(0); }
 
-        /* Hide horizontal scroll */
         html, body { max-width: 100%; overflow-x: hidden; }
     </style>
 </head>
@@ -64,7 +58,7 @@
 
     <nav class="fixed w-full z-50 glass-nav border-b border-slate-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-8 h-16 sm:h-20 flex justify-between items-center">
-            <div class="text-xl sm:text-2xl font-black tracking-tighter uppercase">Card<span class="text-blue-600">.et</span></div>
+            <div class="text-xl sm:text-2xl font-black tracking-tighter uppercase">Smart Card<span class="text-blue-600">.et</span></div>
             <button onclick="toggleModal()" class="bg-slate-900 text-white px-5 py-2.5 rounded-xl text-[10px] sm:text-xs font-black uppercase tracking-widest hover:bg-blue-600 transition-all active:scale-95">Contact</button>
         </div>
     </nav>
@@ -72,14 +66,14 @@
     <section class="relative pt-32 pb-20 sm:pt-48 sm:pb-32 px-4 text-center">
         <div class="max-w-4xl mx-auto">
             <h1 class="text-4xl sm:text-6xl md:text-8xl font-extrabold mb-6 tracking-tight leading-tight reveal">
-                Network <br><span class="text-gradient">Faster.</span>
+                Network <br><span class="text-gradient">Smarter.</span>
             </h1>
             <p class="text-slate-500 text-base sm:text-xl md:text-2xl mb-10 font-medium px-4 reveal">
-                One tap to share everything. Premium NFC business cards designed for the modern Ethiopian professional.
+                Smart Card.et provides the ultimate digital handshake. Share your professional world with a single tap.
             </p>
             <div class="flex flex-col sm:flex-row justify-center gap-4 px-6 reveal">
                 <button onclick="toggleModal()" class="w-full sm:w-auto bg-blue-600 text-white px-10 py-4 rounded-2xl font-black shadow-lg shadow-blue-200">Order Now</button>
-                <a href="#nfc" class="w-full sm:w-auto bg-slate-50 text-slate-900 px-10 py-4 rounded-2xl font-black border border-slate-200 text-center">View Pricing</a>
+                <a href="#nfc" class="w-full sm:w-auto bg-slate-50 text-slate-900 px-10 py-4 rounded-2xl font-black border border-slate-200 text-center">Pricing</a>
             </div>
         </div>
     </section>
@@ -88,14 +82,14 @@
         <div class="max-w-6xl mx-auto px-4">
             <div class="text-center mb-12 reveal">
                 <span class="text-blue-600 font-black text-[10px] uppercase tracking-widest">Digital Tech</span>
-                <h2 class="text-3xl sm:text-5xl font-extrabold mt-3">NFC Smart Cards</h2>
+                <h2 class="text-3xl sm:text-5xl font-extrabold mt-3">Smart NFC Cards</h2>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
                 <div class="md:col-span-3 premium-card bg-white p-6 sm:p-10 rounded-[2rem] sm:rounded-[3rem] border border-slate-100 flex flex-col md:flex-row items-center justify-between text-center md:text-left reveal">
                     <div>
                         <h3 class="text-xl sm:text-2xl font-black">1 Custom Smart Card</h3>
-                        <p class="text-slate-400 text-xs font-bold mt-1">NFC + QR Code Integration</p>
+                        <p class="text-slate-400 text-xs font-bold mt-1">Full Color Printing Included</p>
                     </div>
                     <div class="mt-4 md:mt-0 text-blue-600 font-black text-4xl sm:text-5xl">1,200 <span class="text-lg text-slate-300 font-bold uppercase">etb</span></div>
                 </div>
@@ -118,7 +112,7 @@
 
     <section id="paper" class="py-16 sm:py-24">
         <div class="max-w-6xl mx-auto px-4">
-            <h2 class="text-3xl sm:text-5xl font-extrabold text-center mb-12 reveal">Paper Cards</h2>
+            <h2 class="text-3xl sm:text-5xl font-extrabold text-center mb-12 reveal">Classic Paper Cards</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div class="premium-card bg-slate-900 text-white p-8 sm:p-12 rounded-[2.5rem] reveal">
                     <h3 class="text-2xl font-black text-blue-400 mb-6">300 Gram</h3>
@@ -142,7 +136,7 @@
 
     <section id="kits" class="py-16 sm:py-24 bg-slate-50">
         <div class="max-w-5xl mx-auto px-4">
-            <h2 class="text-3xl sm:text-5xl font-extrabold text-center mb-12 reveal">Bundles</h2>
+            <h2 class="text-3xl sm:text-5xl font-extrabold text-center mb-12 reveal">Smart Bundles</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div class="premium-card bg-white p-10 rounded-[2.5rem] border border-slate-100 reveal text-center md:text-left">
                     <h3 class="text-xl font-black mb-1">Starter Kit</h3>
@@ -151,7 +145,7 @@
                         <li><i class="fa-solid fa-check text-blue-600 mr-2"></i> 5 NFC Smart Cards</li>
                         <li><i class="fa-solid fa-check text-blue-600 mr-2"></i> 50 Paper Cards</li>
                     </ul>
-                    <button onclick="toggleModal()" class="w-full py-4 bg-slate-900 text-white rounded-2xl font-black uppercase text-xs">Choose Bundle</button>
+                    <button onclick="toggleModal()" class="w-full py-4 bg-slate-900 text-white rounded-2xl font-black uppercase text-xs">Order Starter</button>
                 </div>
                 <div class="premium-card bg-slate-900 text-white p-10 rounded-[2.5rem] reveal text-center md:text-left shadow-2xl">
                     <h3 class="text-xl font-black mb-1">Agency Kit</h3>
@@ -160,23 +154,23 @@
                         <li><i class="fa-solid fa-bolt text-blue-400 mr-2"></i> 15 NFC Smart Cards</li>
                         <li><i class="fa-solid fa-bolt text-blue-400 mr-2"></i> 150 Paper Cards</li>
                     </ul>
-                    <button onclick="toggleModal()" class="w-full py-4 bg-blue-600 text-white rounded-2xl font-black uppercase text-xs">Choose Bundle</button>
+                    <button onclick="toggleModal()" class="w-full py-4 bg-blue-600 text-white rounded-2xl font-black uppercase text-xs">Order Agency</button>
                 </div>
             </div>
         </div>
     </section>
 
     <footer class="py-10 text-center text-[10px] font-black uppercase tracking-[0.4em] text-slate-400 px-4">
-        Card.et • Addis Ababa • 2025
+        Smart Card.et • Addis Ababa • 2025
     </footer>
 
     <div id="contactModal" class="modal fixed inset-0 flex items-end sm:items-center justify-center p-0 sm:p-6">
         <div class="absolute inset-0 bg-slate-950/70 backdrop-blur-md" onclick="toggleModal()"></div>
-        <div class="bg-white w-full max-w-lg rounded-t-[2.5rem] sm:rounded-[3rem] relative z-10 p-8 sm:p-12 transform transition-all overflow-hidden">
+        <div class="bg-white w-full max-w-lg rounded-t-[2.5rem] sm:rounded-[3rem] relative z-10 p-8 sm:p-12">
             <button onclick="toggleModal()" class="absolute top-6 right-6 text-slate-300 text-xl"><i class="fa-solid fa-xmark"></i></button>
             <div class="text-center">
-                <h2 class="text-3xl font-black mb-2">Let's Design.</h2>
-                <p class="text-slate-500 font-medium text-sm mb-10">Select your preferred way to order.</p>
+                <h2 class="text-3xl font-black mb-2">Connect with us</h2>
+                <p class="text-slate-500 font-medium text-sm mb-10">Smart Card.et is ready to start your project.</p>
                 
                 <div class="space-y-3">
                     <div class="flex items-center gap-4 p-5 bg-slate-50 rounded-2xl border border-slate-100">
@@ -199,13 +193,11 @@
     </div>
 
     <script>
-        // Modal logic
         function toggleModal() {
             document.getElementById('contactModal').classList.toggle('active');
             document.body.style.overflow = document.body.style.overflow === 'hidden' ? '' : 'hidden';
         }
 
-        // Simple Reveal logic
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) entry.target.classList.add('visible');
