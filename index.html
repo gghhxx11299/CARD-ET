@@ -15,14 +15,12 @@
             overflow-x: hidden; 
         }
 
-        /* Glassmorphism Navigation */
         .glass-nav { 
             background: rgba(255, 255, 255, 0.8); 
             backdrop-filter: blur(20px); 
             -webkit-backdrop-filter: blur(20px);
         }
 
-        /* Premium Animations & Effects */
         .glow-hover { 
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
         }
@@ -50,7 +48,6 @@
             -webkit-text-fill-color: transparent;
         }
 
-        /* Custom Scrollbar */
         ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-track { background: #f8fafc; }
         ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
@@ -87,9 +84,11 @@
     <section id="nfc" class="py-24">
         <div class="max-w-6xl mx-auto px-6">
             <div class="grid lg:grid-cols-2 gap-20 items-center">
-                <div class="relative group">
-                    <div class="absolute -inset-4 bg-blue-100 rounded-[3rem] blur-2xl opacity-0 group-hover:opacity-50 transition duration-500"></div>
-                    <img src="image.png" alt="NFC Card Design" class="relative rounded-[2.5rem] shadow-2xl w-full object-cover transition duration-500 group-hover:scale-[1.02]">
+                <div class="relative group overflow-hidden rounded-[2.5rem] shadow-2xl">
+                    <img src="http://googleusercontent.com/image_collection/image_retrieval/9693521991520204984_0" 
+                         alt="Premium NFC Card" 
+                         class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-blue-900/10 group-hover:bg-transparent transition-colors duration-500"></div>
                 </div>
                 <div>
                     <span class="text-blue-600 font-bold tracking-widest uppercase text-xs">Innovation</span>
@@ -124,7 +123,7 @@
 
     <section id="paper" class="py-24 bg-slate-50">
         <div class="max-w-6xl mx-auto px-6 text-center">
-            <h2 class="text-4xl font-extrabold mb-16">Premium Paper Options</h2>
+            <h2 class="text-4xl font-extrabold mb-16 text-slate-900">Premium Paper Options</h2>
             <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
                 <div class="p-10 rounded-[3rem] bg-slate-900 text-white text-left glow-hover">
                     <h3 class="text-2xl font-bold mb-2 text-blue-400">300 Gram Cards</h3>
@@ -188,14 +187,11 @@
         <div class="bg-white w-full max-w-md rounded-[3rem] shadow-2xl relative z-10 overflow-hidden">
             <div class="p-10 text-center">
                 <button onclick="toggleModal()" class="absolute top-8 right-8 text-slate-300 hover:text-slate-900 text-2xl">&times;</button>
-                
                 <div class="w-20 h-20 bg-blue-50 text-blue-600 rounded-3xl flex items-center justify-center mx-auto mb-8 transform rotate-6">
                     <i class="fa-solid fa-comment-dots text-3xl"></i>
                 </div>
-                
                 <h2 class="text-3xl font-extrabold mb-2">Let's Talk</h2>
                 <p class="text-slate-500 mb-8">Reach out to start your custom design.</p>
-
                 <div class="space-y-4">
                     <div class="p-5 bg-slate-50 rounded-2xl flex items-center gap-5 border border-slate-100">
                         <div class="w-12 h-12 bg-blue-500 text-white rounded-xl flex items-center justify-center shadow-lg shadow-blue-100"><i class="fa-brands fa-telegram text-xl"></i></div>
@@ -204,7 +200,6 @@
                             <p class="font-extrabold text-slate-900">@yourcardset</p>
                         </div>
                     </div>
-                    
                     <div class="p-5 bg-slate-50 rounded-2xl flex items-center gap-5 border border-slate-100">
                         <div class="w-12 h-12 bg-sky-400 text-white rounded-xl flex items-center justify-center"><i class="fa-solid fa-paper-plane text-xl"></i></div>
                         <div class="text-left">
@@ -212,7 +207,6 @@
                             <p class="font-extrabold text-slate-900">+251 70 132 7186</p>
                         </div>
                     </div>
-
                     <a href="tel:+251991168917" class="w-full p-5 bg-slate-900 rounded-2xl flex items-center gap-5 text-white hover:bg-blue-600 transition-colors">
                         <div class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center"><i class="fa-solid fa-phone text-xl"></i></div>
                         <div class="text-left">
@@ -221,8 +215,6 @@
                         </div>
                     </a>
                 </div>
-                
-                <p class="mt-8 text-[10px] text-slate-400 font-bold uppercase tracking-widest">Response time: < 30 mins</p>
             </div>
         </div>
     </div>
