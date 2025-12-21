@@ -7,23 +7,28 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=Noto+Sans+Ethiopic:wght@400;700;900&display=swap');
         
+        :root {
+            --primary: #2563eb;
+            --accent: #7c3aed;
+        }
+
         body { 
-            font-family: 'Plus Jakarta Sans', sans-serif; 
+            font-family: 'Plus Jakarta Sans', 'Noto Sans Ethiopic', sans-serif; 
             scroll-behavior: smooth; 
             overflow-x: hidden;
             width: 100%;
         }
 
         .glass-nav { 
-            background: rgba(255, 255, 255, 0.85); 
-            backdrop-filter: blur(15px); 
-            -webkit-backdrop-filter: blur(15px);
+            background: rgba(255, 255, 255, 0.8); 
+            backdrop-filter: blur(20px); 
+            -webkit-backdrop-filter: blur(20px);
         }
 
         .text-gradient {
-            background: linear-gradient(135deg, #1e293b 0%, #2563eb 50%, #7c3aed 100%);
+            background: linear-gradient(135deg, #1e293b 0%, var(--primary) 50%, var(--accent) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-size: 200% auto;
@@ -32,26 +37,48 @@
         @keyframes textFlow { to { background-position: 200% center; } }
 
         .premium-card {
-            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            transition: all 0.5s cubic-bezier(0.2, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
         }
+
         @media (min-width: 1024px) {
             .premium-card:hover {
-                transform: translateY(-10px);
-                box-shadow: 0 25px 50px -12px rgba(37, 99, 235, 0.2);
+                transform: translateY(-12px) scale(1.02);
+                box-shadow: 0 40px 80px -15px rgba(37, 99, 235, 0.15);
             }
+        }
+
+        .floating-card {
+            animation: float 6s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(5deg); }
+            50% { transform: translateY(-20px) rotate(-5deg); }
         }
 
         .modal { 
             opacity: 0; pointer-events: none; 
-            transition: all 0.4s ease;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             z-index: 100;
         }
         .modal.active { opacity: 1; pointer-events: auto; }
         
-        .reveal { opacity: 0; transform: translateY(20px); transition: all 0.6s ease-out; }
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.2, 1, 0.3, 1); }
         .reveal.visible { opacity: 1; transform: translateY(0); }
 
-        html, body { max-width: 100%; overflow-x: hidden; }
+        .lang-eth { display: none; }
+        body.amharic .lang-en { display: none; }
+        body.amharic .lang-eth { display: block; }
+        body.amharic { font-family: 'Noto Sans Ethiopic', sans-serif; }
+
+        .glow-button {
+            position: relative;
+            transition: 0.3s;
+        }
+        .glow-button:hover {
+            box-shadow: 0 0 20px rgba(37, 99, 235, 0.4);
+        }
     </style>
 </head>
 <body class="bg-white text-slate-900">
@@ -59,21 +86,124 @@
     <nav class="fixed w-full z-50 glass-nav border-b border-slate-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-8 h-16 sm:h-20 flex justify-between items-center">
             <div class="text-xl sm:text-2xl font-black tracking-tighter uppercase">Smart Card<span class="text-blue-600">.et</span></div>
-            <button onclick="toggleModal()" class="bg-slate-900 text-white px-5 py-2.5 rounded-xl text-[10px] sm:text-xs font-black uppercase tracking-widest hover:bg-blue-600 transition-all active:scale-95">Contact</button>
+            
+            <div class="flex items-center gap-3 sm:gap-6">
+                <button onclick="toggleLanguage()" class="text-[10px] font-bold uppercase tracking-widest bg-slate-100 px-3 py-1.5 rounded-full hover:bg-slate-200 transition-all">
+                    <span class="lang-en">አማርኛ</span>
+                    <span class="lang-eth">English</span>
+                </button>
+                <button onclick="toggleModal()" class="bg-slate-900 text-white px-5 py-2.5 rounded-xl text-[10px] sm:text-xs font-black uppercase tracking-widest hover:bg-blue-600 glow-button active:scale-95">
+                    <span class="lang-en">Contact</span>
+                    <span class="lang-eth">ያግኙን</span>
+                </button>
+            </div>
         </div>
     </nav>
 
-    <section class="relative pt-32 pb-20 sm:pt-48 sm:pb-32 px-4 text-center">
-        <div class="max-w-4xl mx-auto">
-            <h1 class="text-4xl sm:text-6xl md:text-8xl font-extrabold mb-6 tracking-tight leading-tight reveal">
-                Network <br><span class="text-gradient">Smarter.</span>
+    <section class="relative pt-32 pb-20 sm:pt-48 sm:pb-32 px-4 text-center overflow-hidden">
+        <div class="absolute top-20 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-blue-50 rounded-full blur-[120px] -z-10 opacity-60"></div>
+        
+        <div class="max-w-4xl mx-auto relative">
+            <div class="inline-block mb-6 px-4 py-1.5 bg-blue-50 rounded-full border border-blue-100 reveal">
+                <span class="text-blue-600 text-[10px] font-black uppercase tracking-[0.2em] lang-en">Ethiopia's #1 Digital Business Card</span>
+                <span class="text-blue-600 text-[10px] font-black uppercase tracking-[0.1em] lang-eth">የኢትዮጵያ ቁጥር 1 ዲጂታል ቢዝነስ ካርድ</span>
+            </div>
+            
+            <h1 class="text-5xl sm:text-7xl md:text-9xl font-extrabold mb-6 tracking-tight leading-[0.9] reveal">
+                <span class="lang-en">Network <br><span class="text-gradient">Smarter.</span></span>
+                <span class="lang-eth text-gradient">ብልህ ግንኙነት።</span>
             </h1>
+            
             <p class="text-slate-500 text-base sm:text-xl md:text-2xl mb-10 font-medium px-4 reveal">
-                Smart Card.et provides the ultimate digital handshake. Share your professional world with a single tap.
+                <span class="lang-en">The ultimate digital handshake. Share your professional world with a single tap. No app needed.</span>
+                <span class="lang-eth">ለአሰራርዎ ምቹ የሆነ የዲጂታል ሰላምታ። መረጃዎን በአንድ ንክኪ ብቻ ያጋሩ። ምንም አፕሊኬሽን አያስፈልግም።</span>
             </p>
-            <div class="flex flex-col sm:flex-row justify-center gap-4 px-6 reveal">
-                <button onclick="toggleModal()" class="w-full sm:w-auto bg-blue-600 text-white px-10 py-4 rounded-2xl font-black shadow-lg shadow-blue-200">Order Now</button>
-                <a href="#nfc" class="w-full sm:w-auto bg-slate-50 text-slate-900 px-10 py-4 rounded-2xl font-black border border-slate-200 text-center">Pricing</a>
+            
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-4 px-6 reveal">
+                <button onclick="toggleModal()" class="w-full sm:w-auto bg-blue-600 text-white px-12 py-5 rounded-2xl font-black shadow-2xl shadow-blue-200 glow-button text-lg">
+                    <span class="lang-en">Order My Card</span>
+                    <span class="lang-eth">ካርድ ይዘዙ</span>
+                </button>
+                <div class="flex items-center gap-2 text-slate-400 font-bold text-sm">
+                    <i class="fa-solid fa-shield-check text-green-500"></i>
+                    <span class="lang-en">Privacy Protected</span>
+                    <span class="lang-eth">ደህንነቱ የተጠበቀ</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-16 relative h-40 reveal">
+            <div class="floating-card absolute left-1/2 -translate-x-1/2 w-64 h-40 bg-gradient-to-br from-slate-900 to-slate-800 rounded-2xl shadow-2xl flex flex-col justify-between p-6 text-left border border-white/10">
+                <div class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center">
+                    <i class="fa-solid fa-bolt text-blue-400"></i>
+                </div>
+                <div>
+                    <div class="h-2 w-24 bg-white/20 rounded mb-2"></div>
+                    <div class="h-2 w-16 bg-white/10 rounded"></div>
+                </div>
+                <div class="absolute right-6 top-6 text-white/20 text-4xl font-black">ET</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 bg-white overflow-hidden border-t border-slate-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                
+                <div class="space-y-8 reveal">
+                    <div class="inline-block px-4 py-1.5 bg-blue-50 rounded-full border border-blue-100">
+                        <span class="text-blue-600 text-[10px] font-black uppercase tracking-widest lang-en">Our Full Service</span>
+                        <span class="text-blue-600 text-[10px] font-black uppercase tracking-widest lang-eth">የእኛ ሙሉ አገልግሎቶች</span>
+                    </div>
+                    <h2 class="text-4xl sm:text-6xl font-extrabold tracking-tight leading-tight">
+                        <span class="lang-en">We do the <span class="text-gradient">Heavy Lifting.</span></span>
+                        <span class="lang-eth text-gradient">ሁሉንም እኛ እንሰራለን።</span>
+                    </h2>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="p-6 bg-slate-50 rounded-3xl border border-slate-100 premium-card">
+                            <div class="w-12 h-12 bg-blue-600 text-white rounded-2xl flex items-center justify-center mb-4 shadow-lg shadow-blue-200"><i class="fa-solid fa-pen-nib text-xl"></i></div>
+                            <h4 class="font-black text-lg mb-1 lang-en">Custom Design</h4>
+                            <h4 class="font-black text-lg mb-1 lang-eth">ባለሙያ ዲዛይን</h4>
+                            <p class="text-slate-500 text-sm font-medium lang-en">Our designers make your logo look stunning.</p>
+                            <p class="text-slate-500 text-sm font-medium lang-eth">የእርስዎ ዓርማ በካርዱ ላይ ውብ እንዲሆን እናደርጋለን።</p>
+                        </div>
+                        <div class="p-6 bg-slate-50 rounded-3xl border border-slate-100 premium-card">
+                            <div class="w-12 h-12 bg-slate-900 text-white rounded-2xl flex items-center justify-center mb-4 shadow-lg"><i class="fa-solid fa-code text-xl"></i></div>
+                            <h4 class="font-black text-lg mb-1 lang-en">NFC Tech Setup</h4>
+                            <h4 class="font-black text-lg mb-1 lang-eth">የNFC ቅንጅት</h4>
+                            <p class="text-slate-500 text-sm font-medium lang-en">We program the chip with all your links.</p>
+                            <p class="text-slate-500 text-sm font-medium lang-eth">ሁሉንም ሊንኮችዎን በቺፑ ላይ እናዘጋጃለን።</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative reveal">
+                    <div class="bg-slate-900 rounded-[3rem] p-8 sm:p-12 text-white relative overflow-hidden shadow-3xl">
+                        <h3 class="text-2xl font-black mb-8 relative">
+                            <span class="lang-en">3 Simple Steps</span>
+                            <span class="lang-eth">3 ቀላል እርምጃዎች</span>
+                        </h3>
+                        <div class="space-y-10 relative">
+                            <div class="flex gap-6">
+                                <div class="flex-shrink-0 w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center font-black">1</div>
+                                <div>
+                                    <h5 class="font-black text-xl lang-en">Send Details</h5>
+                                    <h5 class="font-black text-xl lang-eth">መረጃዎን ይላኩ</h5>
+                                    <p class="text-slate-400 text-sm lang-eth">ዓርማዎን እና ሊንኮችዎን በቴሌግራም ይላኩሉ።</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-6">
+                                <div class="flex-shrink-0 w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center font-black">2</div>
+                                <div>
+                                    <h5 class="font-black text-xl lang-en">Review Design</h5>
+                                    <h5 class="font-black text-xl lang-eth">ዲዛይኑን ያጽድቁ</h5>
+                                    <p class="text-slate-400 text-sm lang-eth">ዲዛይኑን እናሳይዎታለን፤ ሲወዱት እናትመዋለን።</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -81,168 +211,138 @@
     <section id="nfc" class="py-16 sm:py-24 bg-slate-50">
         <div class="max-w-6xl mx-auto px-4">
             <div class="text-center mb-12 reveal">
-                <span class="text-blue-600 font-black text-[10px] uppercase tracking-widest">Digital Tech</span>
-                <h2 class="text-3xl sm:text-5xl font-extrabold mt-3">Smart NFC Cards</h2>
+                <span class="text-blue-600 font-black text-[10px] uppercase tracking-widest">NFC Technology</span>
+                <h2 class="text-3xl sm:text-6xl font-extrabold mt-3">
+                    <span class="lang-en">Smart PVC Cards</span>
+                    <span class="lang-eth">ስማርት PVC ካርዶች</span>
+                </h2>
             </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
-                <div class="md:col-span-3 premium-card bg-white p-6 sm:p-10 rounded-[2rem] sm:rounded-[3rem] border border-slate-100 flex flex-col md:flex-row items-center justify-between text-center md:text-left reveal">
-                    <div>
-                        <h3 class="text-xl sm:text-2xl font-black">1 Custom Smart Card</h3>
-                        <p class="text-slate-400 text-xs font-bold mt-1">Full Color Printing Included</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="md:col-span-3 premium-card bg-white p-8 sm:p-12 rounded-[3rem] border border-slate-100 flex flex-col md:flex-row items-center justify-between reveal">
+                    <div class="text-center md:text-left">
+                        <div class="inline-block px-3 py-1 bg-green-50 text-green-600 text-[10px] font-black rounded-full mb-3 uppercase tracking-widest">Best Seller</div>
+                        <h3 class="text-2xl sm:text-4xl font-black lang-en">1 Custom Smart Card</h3>
+                        <h3 class="text-2xl sm:text-4xl font-black lang-eth">1 ብጁ ስማርት ካርድ</h3>
                     </div>
-                    <div class="mt-4 md:mt-0 text-blue-600 font-black text-4xl sm:text-5xl">1,200 <span class="text-lg text-slate-300 font-bold uppercase">etb</span></div>
+                    <div class="text-blue-600 font-black text-5xl sm:text-7xl mt-4 md:mt-0">1,200 <span class="text-xl text-slate-300 font-bold">ETB</span></div>
                 </div>
 
-                <div class="premium-card bg-white p-8 rounded-[2rem] border border-slate-100 text-center reveal">
-                    <p class="text-slate-400 font-bold text-[10px] uppercase mb-2">5-10 Cards</p>
-                    <p class="text-3xl font-black text-slate-900">1,100 <span class="text-sm">ETB</span></p>
+                <div class="premium-card bg-white p-8 rounded-[2.5rem] border border-slate-100 text-center reveal">
+                    <p class="text-slate-400 font-bold text-[10px] uppercase">5-10 Cards</p>
+                    <p class="text-4xl font-black text-slate-900">1,100 <span class="text-sm">ETB</span></p>
                 </div>
-                <div class="premium-card bg-white p-8 rounded-[2rem] border border-slate-100 text-center reveal">
-                    <p class="text-slate-400 font-bold text-[10px] uppercase mb-2">10-25 Cards</p>
-                    <p class="text-3xl font-black text-slate-900">1,050 <span class="text-sm">ETB</span></p>
+                <div class="premium-card bg-white p-8 rounded-[2.5rem] border border-slate-100 text-center reveal">
+                    <p class="text-slate-400 font-bold text-[10px] uppercase">10-25 Cards</p>
+                    <p class="text-4xl font-black text-slate-900">1,050 <span class="text-sm">ETB</span></p>
                 </div>
-                <div class="premium-card bg-blue-600 p-8 rounded-[2rem] text-center shadow-xl shadow-blue-100 reveal">
-                    <p class="text-blue-100 font-bold text-[10px] uppercase mb-2">25+ Cards</p>
-                    <p class="text-3xl font-black text-white">1,000 <span class="text-sm">ETB</span></p>
+                <div class="premium-card bg-blue-600 p-8 rounded-[2.5rem] text-center reveal shadow-xl shadow-blue-100">
+                    <p class="text-blue-100 font-bold text-[10px] uppercase">25+ Corporate</p>
+                    <p class="text-4xl font-black text-white">1,000 <span class="text-sm">ETB</span></p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="paper" class="py-16 sm:py-24">
+    <section class="py-16 sm:py-24 bg-white">
         <div class="max-w-6xl mx-auto px-4">
-            <h2 class="text-3xl sm:text-5xl font-extrabold text-center mb-12 reveal">Classic Paper Cards</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="premium-card bg-slate-900 text-white p-8 sm:p-12 rounded-[2.5rem] reveal">
-                    <h3 class="text-2xl font-black text-blue-400 mb-6">300 Gram</h3>
-                    <div class="space-y-4">
-                        <div class="flex justify-between border-b border-white/10 pb-2"><span>Single</span> <span>75 ETB</span></div>
-                        <div class="flex justify-between border-b border-white/10 pb-2"><span>5-10 Pcs</span> <span>70 ETB</span></div>
-                        <div class="flex justify-between font-black text-blue-400"><span>25+ Pcs</span> <span>60 ETB</span></div>
+            <h2 class="text-3xl sm:text-6xl font-extrabold text-center mb-16 reveal">
+                <span class="lang-en">Premium Paper</span>
+                <span class="lang-eth">የወረቀት ካርዶች</span>
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="premium-card bg-slate-900 text-white p-10 rounded-[3rem] reveal">
+                    <h3 class="text-3xl font-black text-blue-400 mb-8">300 Gram</h3>
+                    <div class="space-y-6 text-lg font-bold">
+                        <div class="flex justify-between border-b border-white/10 pb-4"><span>Single Card</span> <span class="text-blue-400">170 ETB</span></div>
+                        <div class="flex justify-between border-b border-white/10 pb-4"><span>5-10 Pcs</span> <span class="text-blue-400">160 ETB</span></div>
+                        <div class="flex justify-between font-black"><span>25+ Pcs</span> <span class="text-2xl text-white">140 ETB</span></div>
                     </div>
                 </div>
-                <div class="premium-card bg-white border border-slate-200 p-8 sm:p-12 rounded-[2.5rem] reveal">
-                    <h3 class="text-2xl font-black text-slate-900 mb-6">250 Gram</h3>
-                    <div class="space-y-4 font-bold text-slate-600">
-                        <div class="flex justify-between border-b border-slate-100 pb-2"><span>Single</span> <span>70 ETB</span></div>
-                        <div class="flex justify-between border-b border-slate-100 pb-2"><span>5-10 Pcs</span> <span>65 ETB</span></div>
-                        <div class="flex justify-between font-black text-blue-600"><span>25+ Pcs</span> <span>50 ETB</span></div>
+                <div class="premium-card bg-white border border-slate-200 p-10 rounded-[3rem] reveal">
+                    <h3 class="text-3xl font-black text-slate-900 mb-8">250 Gram</h3>
+                    <div class="space-y-6 text-lg font-bold text-slate-600">
+                        <div class="flex justify-between border-b border-slate-100 pb-4"><span>Single Card</span> <span>160 ETB</span></div>
+                        <div class="flex justify-between border-b border-slate-100 pb-4"><span>5-10 Pcs</span> <span>150 ETB</span></div>
+                        <div class="flex justify-between font-black text-blue-600"><span>25+ Pcs</span> <span>110 ETB</span></div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="kits" class="py-16 sm:py-24 bg-slate-50">
-        <div class="max-w-5xl mx-auto px-4">
-            <h2 class="text-3xl sm:text-5xl font-extrabold text-center mb-12 reveal">Smart Bundles</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="premium-card bg-white p-10 rounded-[2.5rem] border border-slate-100 reveal text-center md:text-left">
-                    <h3 class="text-xl font-black mb-1">Starter Kit</h3>
-                    <div class="text-4xl font-black text-slate-900 mb-8">10,000 ETB</div>
-                    <ul class="text-slate-500 font-bold text-sm space-y-3 mb-8 text-left inline-block">
-                        <li><i class="fa-solid fa-check text-blue-600 mr-2"></i> 5 NFC Smart Cards</li>
-                        <li><i class="fa-solid fa-check text-blue-600 mr-2"></i> 50 Paper Cards</li>
+    <section class="py-16 sm:py-32 bg-slate-900 text-white relative overflow-hidden">
+        <div class="max-w-5xl mx-auto px-4 relative z-10 text-center">
+            <h2 class="text-4xl sm:text-6xl font-extrabold mb-16 reveal">
+                <span class="lang-en">Smart Bundles</span>
+                <span class="lang-eth">ምርጥ ጥቅሎች</span>
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="premium-card bg-white/5 backdrop-blur-md p-12 rounded-[3rem] border border-white/10 reveal">
+                    <h3 class="text-xl font-bold mb-1 opacity-60 uppercase">Starter Pack</h3>
+                    <div class="text-5xl font-black mb-8">10,000 ETB</div>
+                    <ul class="space-y-4 mb-10 text-slate-400 font-bold text-left inline-block">
+                        <li><i class="fa-solid fa-check text-blue-400 mr-2"></i> 5 NFC Smart Cards</li>
+                        <li><i class="fa-solid fa-check text-blue-400 mr-2"></i> 50 Paper Cards</li>
                     </ul>
-                    <button onclick="toggleModal()" class="w-full py-4 bg-slate-900 text-white rounded-2xl font-black uppercase text-xs">Order Starter</button>
+                    <button onclick="toggleModal()" class="w-full py-5 bg-white text-slate-900 rounded-2xl font-black uppercase tracking-widest text-xs">Select</button>
                 </div>
-                <div class="premium-card bg-slate-900 text-white p-10 rounded-[2.5rem] reveal text-center md:text-left shadow-2xl">
-                    <h3 class="text-xl font-black mb-1">Agency Kit</h3>
-                    <div class="text-4xl font-black text-blue-400 mb-8">25,000 ETB</div>
-                    <ul class="text-slate-400 font-bold text-sm space-y-3 mb-8 text-left inline-block">
-                        <li><i class="fa-solid fa-bolt text-blue-400 mr-2"></i> 15 NFC Smart Cards</li>
-                        <li><i class="fa-solid fa-bolt text-blue-400 mr-2"></i> 150 Paper Cards</li>
+                <div class="premium-card bg-blue-600 p-12 rounded-[3rem] reveal shadow-2xl">
+                    <h3 class="text-xl font-bold mb-1 text-blue-100 uppercase">Agency Pack</h3>
+                    <div class="text-5xl font-black mb-8">25,000 ETB</div>
+                    <ul class="space-y-4 mb-10 text-blue-100 font-bold text-left inline-block">
+                        <li><i class="fa-solid fa-bolt text-white mr-2"></i> 15 NFC Smart Cards</li>
+                        <li><i class="fa-solid fa-bolt text-white mr-2"></i> 150 Paper Cards</li>
                     </ul>
-                    <button onclick="toggleModal()" class="w-full py-4 bg-blue-600 text-white rounded-2xl font-black uppercase text-xs">Order Agency</button>
+                    <button onclick="toggleModal()" class="w-full py-5 bg-slate-900 text-white rounded-2xl font-black uppercase tracking-widest text-xs">Select</button>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="faq" class="py-24 px-4 bg-white">
-        <div class="max-w-4xl mx-auto">
-            <div class="text-center mb-16 reveal">
-                <span class="text-blue-600 font-black text-[10px] uppercase tracking-widest">Support</span>
-                <h2 class="text-3xl sm:text-5xl font-extrabold mt-3">Common Questions</h2>
-            </div>
-
-            <div class="space-y-4">
-                <div class="premium-card bg-slate-50 p-6 sm:p-8 rounded-[2rem] border border-slate-100 reveal">
-                    <h4 class="text-lg font-black text-slate-900 mb-3 flex items-center">
-                        <span class="w-8 h-8 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center mr-3 text-sm">01</span>
-                        Does it work with all phones?
-                    </h4>
-                    <p class="text-slate-500 font-medium leading-relaxed pl-11">
-                        Yes! Our Smart Cards work with all iPhones (XR and newer) and most modern Android devices via NFC. For older phones, we include a custom QR code on the back.
-                    </p>
-                </div>
-
-                <div class="premium-card bg-slate-50 p-6 sm:p-8 rounded-[2rem] border border-slate-100 reveal">
-                    <h4 class="text-lg font-black text-slate-900 mb-3 flex items-center">
-                        <span class="w-8 h-8 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center mr-3 text-sm">02</span>
-                        Does the other person need an app?
-                    </h4>
-                    <p class="text-slate-500 font-medium leading-relaxed pl-11">
-                        No app is required. When you tap your card against a phone, your digital profile opens instantly in their browser.
-                    </p>
-                </div>
-
-                <div class="premium-card bg-slate-50 p-6 sm:p-8 rounded-[2rem] border border-slate-100 reveal">
-                    <h4 class="text-lg font-black text-slate-900 mb-3 flex items-center">
-                        <span class="w-8 h-8 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center mr-3 text-sm">03</span>
-                        What is the delivery time in Addis?
-                    </h4>
-                    <p class="text-slate-500 font-medium leading-relaxed pl-11">
-                        Once your design is approved, we typically deliver within 24-48 hours anywhere in Addis Ababa.
-                    </p>
-                </div>
-            </div>
-            
-            <div class="mt-16 text-center reveal">
-                <button onclick="toggleModal()" class="inline-flex items-center text-blue-600 font-black hover:gap-3 transition-all">
-                    Ask us on Telegram <i class="fa-solid fa-arrow-right ml-2"></i>
-                </button>
-            </div>
-        </div>
-    </section>
-
-    <footer class="py-10 text-center text-[10px] font-black uppercase tracking-[0.4em] text-slate-400 px-4">
-        Smart Card.et • Addis Ababa • 2025
+    <footer class="py-20 bg-white text-center">
+        <div class="text-2xl font-black mb-4 tracking-tighter uppercase">Smart Card<span class="text-blue-600">.et</span></div>
+        <p class="text-slate-400 text-[10px] font-black uppercase tracking-[0.5em]">Addis Ababa • 2025</p>
     </footer>
 
     <div id="contactModal" class="modal fixed inset-0 flex items-end sm:items-center justify-center p-0 sm:p-6">
-        <div class="absolute inset-0 bg-slate-950/70 backdrop-blur-md" onclick="toggleModal()"></div>
-        <div class="bg-white w-full max-w-lg rounded-t-[2.5rem] sm:rounded-[3rem] relative z-10 p-8 sm:p-12">
-            <button onclick="toggleModal()" class="absolute top-6 right-6 text-slate-300 text-xl"><i class="fa-solid fa-xmark"></i></button>
-            <div class="text-center">
-                <h2 class="text-3xl font-black mb-2">Connect with us</h2>
-                <p class="text-slate-500 font-medium text-sm mb-10">Smart Card.et is ready to start your project.</p>
-                
-                <div class="space-y-3">
-                    <div class="flex items-center gap-4 p-5 bg-slate-50 rounded-2xl border border-slate-100">
-                        <div class="w-12 h-12 bg-blue-500 text-white rounded-xl flex items-center justify-center shadow-lg"><i class="fa-brands fa-telegram text-xl"></i></div>
-                        <div class="text-left">
-                            <p class="text-[9px] text-slate-400 font-black uppercase tracking-widest">Telegram</p>
-                            <p class="font-black text-slate-900 text-lg">@yourcardset</p>
-                        </div>
+        <div class="absolute inset-0 bg-slate-950/80 backdrop-blur-xl" onclick="toggleModal()"></div>
+        <div class="bg-white w-full max-w-lg rounded-t-[3rem] sm:rounded-[4rem] relative z-10 p-10 sm:p-16 text-center">
+            <button onclick="toggleModal()" class="absolute top-8 right-8 text-slate-300"><i class="fa-solid fa-circle-xmark text-3xl"></i></button>
+            <h2 class="text-4xl font-black mb-4 lang-en">Let's Connect.</h2>
+            <h2 class="text-4xl font-black mb-4 lang-eth">እንገናኝ።</h2>
+            <p class="text-slate-500 mb-10 lang-en">Text on Telegram or Call us to start.</p>
+            <p class="text-slate-500 mb-10 lang-eth">በቴሌግራም ወይም በስልክ ይዘዙ።</p>
+            <div class="space-y-4">
+                <a href="https://t.me/yourcardset" target="_blank" class="flex items-center gap-5 p-6 bg-slate-50 rounded-[2rem] border border-slate-100">
+                    <div class="w-14 h-14 bg-blue-500 text-white rounded-2xl flex items-center justify-center shadow-lg"><i class="fa-brands fa-telegram text-2xl"></i></div>
+                    <div class="text-left">
+                        <p class="text-[10px] text-slate-400 font-black uppercase tracking-widest">Telegram</p>
+                        <p class="font-black text-xl">@yourcardset</p>
                     </div>
-                    <a href="tel:+251991168917" class="flex items-center gap-4 p-5 bg-slate-900 text-white rounded-2xl">
-                        <div class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center"><i class="fa-solid fa-phone text-xl"></i></div>
-                        <div class="text-left">
-                            <p class="text-[9px] opacity-50 font-black uppercase tracking-widest">Call Directly</p>
-                            <p class="font-black text-lg">+251 99 116 8917</p>
-                        </div>
-                    </a>
-                </div>
+                </a>
+                <a href="tel:+251991168917" class="flex items-center gap-5 p-6 bg-slate-900 text-white rounded-[2rem]">
+                    <div class="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center"><i class="fa-solid fa-phone text-2xl"></i></div>
+                    <div class="text-left">
+                        <p class="text-[10px] opacity-50 font-black uppercase tracking-widest">Call Now</p>
+                        <p class="font-black text-xl">+251 99 116 8917</p>
+                    </div>
+                </a>
             </div>
         </div>
     </div>
 
     <script>
+        function toggleLanguage() {
+            document.body.classList.toggle('amharic');
+            localStorage.setItem('lang', document.body.classList.contains('amharic') ? 'am' : 'en');
+        }
+        if(localStorage.getItem('lang') === 'am') document.body.classList.add('amharic');
+
         function toggleModal() {
-            document.getElementById('contactModal').classList.toggle('active');
-            document.body.style.overflow = document.body.style.overflow === 'hidden' ? '' : 'hidden';
+            const modal = document.getElementById('contactModal');
+            modal.classList.toggle('active');
+            document.body.style.overflow = modal.classList.contains('active') ? 'hidden' : '';
         }
 
         const observer = new IntersectionObserver((entries) => {
@@ -250,7 +350,6 @@
                 if (entry.isIntersecting) entry.target.classList.add('visible');
             });
         }, { threshold: 0.1 });
-
         document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
     </script>
 </body>
