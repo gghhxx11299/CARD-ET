@@ -12,22 +12,16 @@
         body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #ffffff; color: #1a1a1a; scroll-behavior: smooth; }
         body.amharic { font-family: 'Noto Sans Ethiopic', sans-serif; }
 
-        /* Real World UI Elements */
         .glass-header { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(0,0,0,0.05); }
-        .feature-card { transition: all 0.3s ease; border: 1px solid #f1f5f9; }
-        .feature-card:hover { transform: translateY(-5px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05); border-color: #3b82f6; }
         
-        /* Language Toggles */
         .lang-eth { display: none; }
         body.amharic .lang-en { display: none; }
         body.amharic .lang-eth { display: block; }
         body.amharic h1, body.amharic h2 { line-height: 1.4; }
 
-        /* Video Styling */
         .video-wrapper { position: relative; padding-bottom: 56.25%; height: 0; border-radius: 20px; overflow: hidden; background: #000; }
         .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
 
-        /* FAQ Accordion */
         .faq-item { border-bottom: 1px solid #f1f5f9; }
         .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; color: #64748b; }
         .faq-item.active .faq-answer { max-height: 300px; padding-bottom: 20px; }
@@ -38,11 +32,6 @@
     <nav class="fixed top-0 w-full z-[100] glass-header">
         <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
             <div class="text-xl font-extrabold tracking-tighter">FINEDATA<span class="text-blue-600">.et</span></div>
-            <div class="hidden md:flex gap-8 text-sm font-bold uppercase tracking-widest text-gray-500">
-                <a href="#features" class="hover:text-blue-600">Benefits</a>
-                <a href="#video-guide" class="hover:text-blue-600">Guide</a>
-                <a href="#faq" class="hover:text-blue-600">FAQ</a>
-            </div>
             <div class="flex items-center gap-4">
                 <button onclick="document.body.classList.toggle('amharic')" class="text-[10px] font-black uppercase bg-gray-100 px-4 py-2 rounded-full">
                     <span class="lang-en">Amharic</span><span class="lang-eth">English</span>
@@ -58,10 +47,6 @@
         <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
             <div>
                 <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 text-blue-600 text-[11px] font-black uppercase tracking-[0.2em] mb-8">
-                    <span class="relative flex h-2 w-2">
-                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
-                        <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-600"></span>
-                    </span>
                     Verified Digital Solutions
                 </div>
                 <h1 class="text-5xl lg:text-7xl font-extrabold leading-[1.05] tracking-tight mb-8">
@@ -74,67 +59,42 @@
                 </p>
                 <div class="flex flex-wrap gap-4">
                     <a href="#order" class="bg-gray-900 text-white px-10 py-5 rounded-2xl font-black uppercase text-xs tracking-widest shadow-xl">Get Started</a>
-                    <a href="#video-guide" class="bg-white border border-gray-200 text-gray-900 px-10 py-5 rounded-2xl font-black uppercase text-xs tracking-widest hover:bg-gray-50">Watch Demo</a>
                 </div>
             </div>
             <div class="relative">
-                <div class="bg-gray-900 w-full max-w-md aspect-[1.58/1] rounded-[32px] p-10 mx-auto shadow-[0_50px_100px_-20px_rgba(0,0,0,0.3)] flex flex-col justify-between text-white relative z-10 overflow-hidden">
+                <div class="bg-gray-900 w-full max-w-md aspect-[1.58/1] rounded-[32px] p-10 mx-auto shadow-[0_50px_100px_-20px_rgba(0,0,0,0.3)] flex flex-col justify-between text-white relative z-10 overflow-hidden border border-white/10">
                     <div class="flex justify-between items-start">
                         <i class="fa-solid fa-wifi rotate-90 text-3xl text-blue-500"></i>
-                        <span class="font-black italic tracking-tighter opacity-40">NFC v2.0</span>
+                        <span class="font-black italic tracking-tighter opacity-40 uppercase">FineData.et</span>
                     </div>
                     <div class="space-y-2">
-                        <p class="text-2xl font-black tracking-widest uppercase">FineData User</p>
-                        <p class="text-[10px] uppercase font-bold text-blue-500 tracking-[0.3em]">Smart Card Owner</p>
+                        <p class="text-2xl font-black tracking-widest uppercase">Your Name</p>
+                        <p class="text-[10px] uppercase font-bold text-blue-500 tracking-[0.3em]">Smart Card</p>
                     </div>
                 </div>
-                <div class="absolute -top-10 -right-10 w-64 h-64 bg-blue-100 rounded-full blur-[100px] -z-10 opacity-60"></div>
             </div>
         </div>
     </section>
 
-    <section class="py-12 border-y border-gray-50">
-        <div class="max-w-7xl mx-auto px-6 flex flex-wrap justify-center gap-12 opacity-30 grayscale">
-            <i class="fa-brands fa-apple text-4xl"></i>
-            <i class="fa-brands fa-google text-4xl"></i>
-            <i class="fa-brands fa-android text-4xl"></i>
-            <i class="fa-brands fa-linkedin text-4xl"></i>
-            <i class="fa-brands fa-whatsapp text-4xl"></i>
-        </div>
-    </section>
-
-    <section id="features" class="py-24 px-6 bg-gray-50/50">
+    <section class="py-24 px-6 bg-gray-50/50">
         <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-8">
-            <div class="feature-card bg-white p-10 rounded-[32px]">
-                <div class="w-14 h-14 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center mb-8 text-xl">
-                    <i class="fa-solid fa-cloud-arrow-up"></i>
-                </div>
+            <div class="bg-white p-10 rounded-[32px] border border-gray-100">
                 <h3 class="text-xl font-black mb-4 uppercase tracking-tighter">Live Updates</h3>
-                <p class="text-gray-500 text-sm leading-relaxed">Changed your office location or phone? Update your profile link instantly without ever needing a new card.</p>
+                <p class="text-gray-500 text-sm">Update your profile link instantly without ever needing a new card.</p>
             </div>
-            <div class="feature-card bg-white p-10 rounded-[32px]">
-                <div class="w-14 h-14 bg-purple-50 text-purple-600 rounded-2xl flex items-center justify-center mb-8 text-xl">
-                    <i class="fa-solid fa-mobile-button"></i>
-                </div>
+            <div class="bg-white p-10 rounded-[32px] border border-gray-100">
                 <h3 class="text-xl font-black mb-4 uppercase tracking-tighter">Zero Friction</h3>
-                <p class="text-gray-500 text-sm leading-relaxed">No apps required for the receiver. Works natively on every modern iPhone and Android device globally.</p>
+                <p class="text-gray-500 text-sm">No apps required. Works natively on iPhone and Android globally.</p>
             </div>
-            <div class="feature-card bg-white p-10 rounded-[32px]">
-                <div class="w-14 h-14 bg-green-50 text-green-600 rounded-2xl flex items-center justify-center mb-8 text-xl">
-                    <i class="fa-solid fa-leaf"></i>
-                </div>
+            <div class="bg-white p-10 rounded-[32px] border border-gray-100">
                 <h3 class="text-xl font-black mb-4 uppercase tracking-tighter">Sustainable</h3>
-                <p class="text-gray-500 text-sm leading-relaxed">One FineData card replaces over 2,000 paper business cards. Better for the environment and your wallet.</p>
+                <p class="text-gray-500 text-sm">One card replaces thousands of paper cards. Better for the environment.</p>
             </div>
         </div>
     </section>
 
-    <section id="video-guide" class="py-24 px-6">
+    <section class="py-24 px-6">
         <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-black mb-4">See It In Action</h2>
-                <p class="text-gray-500">Everything you need to know about setting up your card.</p>
-            </div>
             <div class="grid lg:grid-cols-2 gap-10">
                 <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/eWPtt2hLnJk" allowfullscreen></iframe></div>
                 <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/BZRYHNmB9RI" allowfullscreen></iframe></div>
@@ -143,15 +103,14 @@
     </section>
 
     <section id="order" class="py-24 px-6 bg-white">
-        <div class="max-w-4xl mx-auto bg-gray-900 rounded-[48px] p-8 md:p-20 text-white overflow-hidden relative">
+        <div class="max-w-4xl mx-auto bg-gray-900 rounded-[48px] p-8 md:p-20 text-white relative overflow-hidden">
             <div class="relative z-10 grid lg:grid-cols-2 gap-16 items-center">
                 <div>
-                    <h2 class="text-4xl font-black mb-6">Commercial Pricing</h2>
-                    <p class="text-gray-400 mb-10 text-sm font-medium">Bulk orders include custom branding and priority setup. For orders over 50 units, contact our sales team.</p>
+                    <h2 class="text-4xl font-black mb-6 uppercase">Pricing</h2>
                     <div class="space-y-10">
                         <div>
                             <div class="flex justify-between mb-4 font-black text-[10px] uppercase tracking-widest text-gray-500">
-                                <span>Selected Quantity</span>
+                                <span>Quantity</span>
                                 <span class="text-blue-500 text-lg" id="qtyVal">1</span>
                             </div>
                             <input type="range" min="1" max="50" value="1" id="qtyInput" oninput="calculate()" class="w-full h-1.5 bg-white/10 rounded-lg appearance-none cursor-pointer accent-blue-600">
@@ -162,28 +121,21 @@
                                 <p class="text-5xl font-black"><span id="totalVal">1,200</span></p>
                             </div>
                             <div class="text-right">
-                                <p class="text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-1">Per Unit</p>
-                                <p class="text-sm font-bold opacity-60"><span id="perUnit">1,200</span> ETB</p>
+                                <p class="text-sm font-bold opacity-60"><span id="perUnit">1,200</span> ETB / Unit</p>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="flex flex-col gap-4">
-                    <a href="https://t.me/finedata_et_bot" class="w-full bg-blue-600 hover:bg-blue-700 text-white py-6 rounded-2xl font-black uppercase tracking-widest text-center transition-all shadow-xl shadow-blue-900/20">
-                        Order via Telegram
-                    </a>
-                    <a href="tel:+251991168917" class="w-full bg-white/5 border border-white/10 text-white py-6 rounded-2xl font-black uppercase tracking-widest text-center hover:bg-white/10 transition-all">
-                        Call for Bulk Orders
-                    </a>
-                </div>
+                <a href="https://t.me/finedata_et_bot" class="w-full bg-blue-600 hover:bg-blue-700 text-white py-6 rounded-2xl font-black uppercase tracking-widest text-center transition-all shadow-xl shadow-blue-900/20">
+                    Order via Telegram
+                </a>
             </div>
-            <div class="absolute bottom-0 right-0 w-64 h-64 bg-blue-600/20 rounded-full blur-[100px] z-0"></div>
         </div>
     </section>
 
-    <section id="faq" class="py-24 px-6 bg-gray-50/50">
+    <section class="py-24 px-6 bg-gray-50/50">
         <div class="max-w-3xl mx-auto">
-            <h2 class="text-4xl font-black text-center mb-16 uppercase tracking-tighter">F.A.Q.</h2>
+            <h2 class="text-3xl font-black text-center mb-12 uppercase tracking-tighter">F.A.Q.</h2>
             <div class="space-y-2">
                 <div class="faq-item" onclick="toggleFaq(this)">
                     <div class="flex justify-between items-center py-6 cursor-pointer font-bold">
@@ -207,34 +159,10 @@
         </div>
     </section>
 
-    <footer class="py-20 px-6 border-t border-gray-100">
-        <div class="max-w-7xl mx-auto grid md:grid-cols-4 gap-12">
-            <div class="col-span-2">
-                <div class="text-xl font-extrabold mb-6 tracking-tighter">FINEDATA<span class="text-blue-600">.et</span></div>
-                <p class="text-gray-400 text-sm max-w-sm mb-8">Leading the digital transformation of professional networking in Ethiopia. We create smart solutions for modern entrepreneurs.</p>
-                <div class="flex gap-4 text-gray-300">
-                    <i class="fa-brands fa-instagram text-xl hover:text-blue-600 cursor-pointer"></i>
-                    <i class="fa-brands fa-telegram text-xl hover:text-blue-600 cursor-pointer"></i>
-                    <i class="fa-brands fa-linkedin text-xl hover:text-blue-600 cursor-pointer"></i>
-                </div>
-            </div>
-            <div>
-                <h4 class="font-black uppercase text-[10px] tracking-widest mb-6">Quick Links</h4>
-                <ul class="text-sm text-gray-500 space-y-4 font-bold">
-                    <li><a href="#features" class="hover:text-blue-600">Features</a></li>
-                    <li><a href="#order" class="hover:text-blue-600">Pricing</a></li>
-                    <li><a href="#faq" class="hover:text-blue-600">Support</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4 class="font-black uppercase text-[10px] tracking-widest mb-6">Contact</h4>
-                <ul class="text-sm text-gray-500 space-y-4 font-bold">
-                    <li>Addis Ababa, Ethiopia</li>
-                    <li>+251 99 116 8917</li>
-                    <li>info@finedata.et</li>
-                </ul>
-            </div>
-        </div>
+    <footer class="py-16 px-6 border-t border-gray-100 text-center">
+        <div class="text-xl font-extrabold mb-4 tracking-tighter">FINEDATA<span class="text-blue-600">.et</span></div>
+        <p class="text-gray-400 text-xs font-bold uppercase tracking-widest">Addis Ababa, Ethiopia &bull; +251 99 116 8917</p>
+        <p class="mt-8 text-gray-300 text-[10px] font-bold uppercase tracking-[0.4em]">&copy; 2025 FineData ET</p>
     </footer>
 
     <script>
