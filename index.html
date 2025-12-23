@@ -3,165 +3,238 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FineData | Premium NFC Ethiopia</title>
+    <title>FineData | Premium NFC Digital Business Cards Ethiopia</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&family=Noto+Sans+Ethiopic:wght@400;700;900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Noto+Sans+Ethiopic:wght@400;700;900&display=swap');
         
-        body { font-family: 'Plus Jakarta Sans', sans-serif; transition: background 0.3s ease; }
+        :root { --blue: #2563eb; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background: #fff; color: #111; scroll-behavior: smooth; overflow-x: hidden; }
         
-        /* Language Logic */
+        /* Language Toggle Logic */
         .lang-eth { display: none; }
         body.amharic { font-family: 'Noto Sans Ethiopic', sans-serif; }
         body.amharic .lang-en { display: none; }
         body.amharic .lang-eth { display: block; }
-        
-        /* Visual Improvements */
-        .glass-nav { background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px); border-bottom: 1px solid #eee; }
-        .video-box { position: relative; padding-bottom: 56.25%; height: 0; border-radius: 20px; overflow: hidden; background: #000; shadow: 0 10px 30px rgba(0,0,0,0.1); }
-        .video-box iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
 
-        .faq-item.active .faq-answer { max-height: 200px; padding-bottom: 20px; }
-        .faq-answer { max-height: 0; overflow: hidden; transition: all 0.3s ease; color: #64748b; }
+        /* Professional UI Elements */
+        .glass-nav { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(15px); border-bottom: 1px solid rgba(0,0,0,0.05); }
+        .hero-bg { background: radial-gradient(circle at 50% 50%, #f8fafc 0%, #ffffff 100%); }
+        
+        /* 3D Premium Card */
+        .card-perspective { perspective: 1000px; }
+        .nfc-card {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            transform-style: preserve-3d;
+            transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+        .nfc-card:hover { transform: rotateY(10deg) rotateX(5deg); }
+
+        /* FAQ */
+        .faq-item { border-bottom: 1px solid #f1f5f9; }
+        .faq-answer { max-height: 0; overflow: hidden; transition: all 0.3s ease-out; color: #64748b; }
+        .faq-item.active .faq-answer { max-height: 300px; padding-bottom: 24px; }
+        .faq-item.active .fa-chevron-down { transform: rotate(180deg); }
+
+        /* Video Containers */
+        .video-aspect { position: relative; padding-bottom: 56.25%; height: 0; border-radius: 24px; overflow: hidden; background: #000; }
+        .video-aspect iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
     </style>
 </head>
 <body class="antialiased">
 
-    <nav class="fixed top-0 w-full z-50 glass-nav px-6">
-        <div class="max-w-7xl mx-auto h-20 flex justify-between items-center">
-            <div class="text-xl font-black tracking-tighter">FINEDATA<span class="text-blue-600">.et</span></div>
-            <button id="langToggle" onclick="toggleLang()" class="bg-blue-600 text-white px-5 py-2 rounded-full text-[11px] font-bold uppercase tracking-widest transition-colors">
-                አማርኛ
-            </button>
+    <nav class="fixed top-0 w-full z-50 glass-nav">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+            <div class="text-xl font-black tracking-tighter uppercase">FINEDATA<span class="text-blue-600">.et</span></div>
+            <div class="flex items-center gap-4">
+                <button id="langBtn" onclick="toggleLang()" class="bg-gray-100 text-gray-900 px-5 py-2 rounded-full text-[11px] font-bold uppercase tracking-widest transition-all hover:bg-gray-200">
+                    አማርኛ
+                </button>
+                <a href="#order" class="bg-blue-600 text-white px-6 py-2.5 rounded-xl text-xs font-bold uppercase tracking-widest shadow-lg shadow-blue-100 active:scale-95 transition-all">
+                    <span class="lang-en">Order</span><span class="lang-eth">ይዘዙ</span>
+                </a>
+            </div>
         </div>
     </nav>
 
-    <section class="pt-40 pb-20 px-6 max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
-        <div>
-            <h1 class="text-5xl lg:text-7xl font-extrabold leading-[1.1] mb-8">
-                <span class="lang-en">The Future of <br><span class="text-blue-600">Business Cards.</span></span>
-                <span class="lang-eth">የወደፊቱ የንግድ <br><span class="text-blue-600">መገናኛ ዘዴ።</span></span>
-            </h1>
-            <p class="text-gray-500 text-lg mb-10 leading-relaxed max-w-md">
-                <span class="lang-en">One tap to share your contact details instantly. No apps required. Works with all modern smartphones.</span>
-                <span class="lang-eth">መረጃዎን በአንድ ንክኪ ያጋሩ። ምንም አይነት አፕሊኬሽን አይጠይቅም። በሁሉም ዘመናዊ ስልኮች ላይ ይሰራል።</span>
-            </p>
-            <a href="#order" class="inline-block bg-gray-900 text-white px-10 py-5 rounded-2xl font-bold uppercase text-xs tracking-widest shadow-xl">
-                <span class="lang-en">Order Now</span><span class="lang-eth">አሁኑኑ ይዘዙ</span>
-            </a>
-        </div>
-        <div class="flex justify-center">
-            <div class="w-full max-w-sm aspect-[1.58/1] bg-gray-900 rounded-[24px] p-8 shadow-2xl flex flex-col justify-between text-white border border-white/10">
-                <i class="fa-solid fa-wifi rotate-90 text-2xl text-blue-500"></i>
-                <p class="text-xl font-black italic">FINEDATA</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-20 px-6 bg-gray-50">
-        <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-8 text-center">
-            <div class="bg-white p-8 rounded-3xl">
-                <h3 class="font-bold mb-4 uppercase tracking-widest text-xs text-blue-600">
-                    <span class="lang-en">Universal</span><span class="lang-eth">ለሁሉም የሚሆን</span>
-                </h3>
-                <p class="text-sm text-gray-500">
-                    <span class="lang-en">Works with iOS and Android.</span>
-                    <span class="lang-eth">በአይፎን እና አንድሮይድ ላይ ይሰራል።</span>
-                </p>
-            </div>
-            <div class="bg-white p-8 rounded-3xl">
-                <h3 class="font-bold mb-4 uppercase tracking-widest text-xs text-blue-600">
-                    <span class="lang-en">Eco-Friendly</span><span class="lang-eth">አካባቢን የማይጎዳ</span>
-                </h3>
-                <p class="text-sm text-gray-500">
-                    <span class="lang-en">Save paper, save costs.</span>
-                    <span class="lang-eth">ወጪዎን እና ወረቀት ይቆጥቡ።</span>
-                </p>
-            </div>
-            <div class="bg-white p-8 rounded-3xl">
-                <h3 class="font-bold mb-4 uppercase tracking-widest text-xs text-blue-600">
-                    <span class="lang-en">Always Current</span><span class="lang-eth">ሁልጊዜ አዲስ</span>
-                </h3>
-                <p class="text-sm text-gray-500">
-                    <span class="lang-en">Update info anytime.</span>
-                    <span class="lang-eth">መረጃዎን በፈለጉት ጊዜ መቀየር ይችላሉ።</span>
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-20 px-6">
-        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-10">
-            <div class="video-box"><iframe src="https://www.youtube.com/embed/eWPtt2hLnJk"></iframe></div>
-            <div class="video-box"><iframe src="https://www.youtube.com/embed/BZRYHNmB9RI"></iframe></div>
-        </div>
-    </section>
-
-    <section id="order" class="py-20 px-6">
-        <div class="max-w-4xl mx-auto bg-gray-900 rounded-[40px] p-10 md:p-16 text-white text-center">
-            <h2 class="text-3xl font-black mb-10 uppercase tracking-widest">
-                <span class="lang-en">Order Calculator</span><span class="lang-eth">የዋጋ ማስያ</span>
-            </h2>
-            <div class="max-w-md mx-auto space-y-10">
-                <div class="flex justify-between font-bold text-gray-400 uppercase text-xs">
-                    <span><span class="lang-en">Quantity</span><span class="lang-eth">ብዛት</span></span>
-                    <span id="qDisplay" class="text-blue-500 text-xl">1</span>
+    <section class="hero-bg pt-40 pb-20 px-6">
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+            <div>
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 text-blue-600 text-[11px] font-black uppercase tracking-widest mb-6">
+                    Professional NFC Solutions
                 </div>
-                <input type="range" min="1" max="50" value="1" id="qIn" oninput="updatePrice()" class="w-full accent-blue-600">
-                <div class="bg-white/5 p-6 rounded-2xl flex justify-between items-center">
-                    <div class="text-left">
-                        <p class="text-[10px] uppercase font-bold text-gray-500 tracking-widest">Total ETB</p>
-                        <p class="text-4xl font-black" id="tDisplay">1,200</p>
-                    </div>
-                    <a href="https://t.me/finedata_et_bot" class="bg-blue-600 text-white px-8 py-4 rounded-xl font-bold uppercase text-[10px] tracking-widest hover:scale-105 transition-transform">
-                        <span class="lang-en">Order</span><span class="lang-eth">ይዘዙ</span>
+                <h1 class="text-5xl lg:text-7xl font-extrabold leading-[1.1] mb-8 tracking-tight">
+                    <span class="lang-en">Elevate Your <br><span class="text-blue-600">Professional Identity.</span></span>
+                    <span class="lang-eth">የንግድ ግንኙነትዎን <br><span class="text-blue-600">ያዘምኑ።</span></span>
+                </h1>
+                <p class="text-gray-500 text-lg mb-10 leading-relaxed max-w-lg">
+                    <span class="lang-en">Stop wasting money on paper. One FineData card shares your info instantly with a tap. No apps, no friction, just results.</span>
+                    <span class="lang-eth">በወረቀት ካርድ ላይ ገንዘብዎን አያባክኑ። አንድ የ FineData ካርድ መረጃዎን በአንድ ንክኪ ያጋራል። ምንም አይነት አፕሊኬሽን አይፈልግም።</span>
+                </p>
+                <div class="flex gap-4">
+                    <a href="#order" class="bg-gray-900 text-white px-10 py-5 rounded-2xl font-bold uppercase text-xs tracking-widest shadow-xl">
+                        <span class="lang-en">Get Started</span><span class="lang-eth">ይጀምሩ</span>
                     </a>
                 </div>
             </div>
+            <div class="card-perspective flex justify-center">
+                <div class="nfc-card w-full max-w-sm aspect-[1.58/1] rounded-[24px] p-10 flex flex-col justify-between text-white border border-white/10 relative overflow-hidden">
+                    <div class="flex justify-between items-start">
+                        <i class="fa-solid fa-wifi rotate-90 text-3xl text-blue-500"></i>
+                        <span class="font-black italic text-xl">FINEDATA</span>
+                    </div>
+                    <div>
+                        <p class="text-2xl font-bold tracking-widest">NFC SMART CARD</p>
+                        <p class="text-[10px] uppercase font-bold text-blue-500 tracking-[0.4em] mt-1">Ethiopia Edition</p>
+                    </div>
+                    <div class="absolute -bottom-10 -right-10 w-40 h-40 bg-blue-600/20 rounded-full blur-3xl"></div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <section class="py-20 px-6 border-t border-gray-100 max-w-3xl mx-auto">
-        <h2 class="text-2xl font-black mb-8 text-center uppercase tracking-widest">FAQ</h2>
-        <div class="faq-item border-b border-gray-100" onclick="this.classList.toggle('active')">
-            <div class="py-6 font-bold flex justify-between cursor-pointer">
-                <span><span class="lang-en">How do I use it?</span><span class="lang-eth">እንዴት ነው የምጠቀመው?</span></span>
-                <i class="fa-solid fa-chevron-down text-blue-600"></i>
+    <section class="py-24 px-6 bg-white border-y border-gray-50">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-12 text-center">
+            <div class="space-y-4">
+                <div class="text-blue-600 text-3xl"><i class="fa-solid fa-bolt"></i></div>
+                <h3 class="font-bold uppercase tracking-widest text-sm">
+                    <span class="lang-en">Instant Share</span><span class="lang-eth">ፈጣን ግንኙነት</span>
+                </h3>
+                <p class="text-gray-500 text-sm">Works with all modern iOS & Android devices.</p>
             </div>
-            <div class="faq-answer">
-                <span class="lang-en">Just tap the card to the back of any modern smartphone.</span>
-                <span class="lang-eth">ካርዱን በማንኛውም ዘመናዊ ስልክ ጀርባ ላይ ማስጠጋት ብቻ ነው።</span>
+            <div class="space-y-4">
+                <div class="text-blue-600 text-3xl"><i class="fa-solid fa-pen-to-square"></i></div>
+                <h3 class="font-bold uppercase tracking-widest text-sm">
+                    <span class="lang-en">Unlimited Updates</span><span class="lang-eth">ያልተገደበ ማሻሻያ</span>
+                </h3>
+                <p class="text-gray-500 text-sm">Change your links anytime without buying a new card.</p>
+            </div>
+            <div class="space-y-4">
+                <div class="text-blue-600 text-3xl"><i class="fa-solid fa-shield-halved"></i></div>
+                <h3 class="font-bold uppercase tracking-widest text-sm">
+                    <span class="lang-en">Zero Fees</span><span class="lang-eth">ተጨማሪ ክፍያ የለም</span>
+                </h3>
+                <p class="text-gray-500 text-sm">No monthly subscriptions. Buy once, use forever.</p>
             </div>
         </div>
     </section>
 
-    <footer class="py-16 text-center border-t border-gray-50">
-        <p class="text-gray-400 font-bold text-[10px] uppercase tracking-[0.3em]">
-            Addis Ababa, Ethiopia &bull; +251 99 116 8917
-        </p>
+    <section class="py-24 px-6 bg-gray-50">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl font-black text-center mb-16 uppercase tracking-tighter">
+                <span class="lang-en">Learn More</span><span class="lang-eth">ተጨማሪ ይወቁ</span>
+            </h2>
+            <div class="grid lg:grid-cols-2 gap-10">
+                <div class="bg-white p-5 rounded-[32px] shadow-sm">
+                    <div class="video-aspect mb-6">
+                        <iframe src="https://www.youtube.com/embed/eWPtt2hLnJk"></iframe>
+                    </div>
+                    <p class="px-4 font-bold text-sm uppercase text-gray-400 tracking-widest">01. NFC Demo</p>
+                </div>
+                <div class="bg-white p-5 rounded-[32px] shadow-sm">
+                    <div class="video-aspect mb-6">
+                        <iframe src="https://www.youtube.com/embed/BZRYHNmB9RI"></iframe>
+                    </div>
+                    <p class="px-4 font-bold text-sm uppercase text-gray-400 tracking-widest">02. Setup Guide</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="order" class="py-24 px-6">
+        <div class="max-w-4xl mx-auto bg-gray-900 rounded-[48px] p-10 md:p-20 text-white relative overflow-hidden shadow-2xl">
+            <div class="relative z-10 grid lg:grid-cols-2 gap-16 items-center">
+                <div>
+                    <h2 class="text-4xl font-black mb-6 uppercase tracking-tight">
+                        <span class="lang-en">Pricing</span><span class="lang-eth">ዋጋ</span>
+                    </h2>
+                    <div class="space-y-12">
+                        <div>
+                            <div class="flex justify-between mb-4 font-black text-[10px] uppercase tracking-widest text-gray-500">
+                                <span><span class="lang-en">Quantity</span><span class="lang-eth">ብዛት</span></span>
+                                <span class="text-blue-500 text-xl" id="qNum">1</span>
+                            </div>
+                            <input type="range" min="1" max="50" value="1" id="qRange" oninput="calc()" class="w-full h-1.5 bg-white/10 rounded-lg appearance-none cursor-pointer accent-blue-600">
+                        </div>
+                        <div class="pt-8 border-t border-white/10 flex justify-between items-end">
+                            <div>
+                                <p class="text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-1">Total ETB</p>
+                                <p class="text-5xl font-black" id="totalPrice">1,200</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-sm font-bold opacity-60"><span id="unitPrice">1,200</span> ETB / Unit</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a href="https://t.me/finedata_et_bot" class="w-full bg-blue-600 hover:bg-blue-700 text-white py-6 rounded-2xl font-black uppercase tracking-widest text-center transition-all shadow-xl shadow-blue-900/40">
+                    <i class="fa-brands fa-telegram text-xl mr-2"></i>
+                    <span class="lang-en">Order via Telegram</span><span class="lang-eth">በቴሌግራም ይዘዙ</span>
+                </a>
+            </div>
+            <div class="absolute top-0 right-0 w-64 h-64 bg-blue-600/10 rounded-full blur-[100px]"></div>
+        </div>
+    </section>
+
+    <section class="py-24 px-6 bg-white max-w-3xl mx-auto">
+        <h2 class="text-3xl font-black text-center mb-12 uppercase tracking-tighter">FAQ</h2>
+        <div class="space-y-4">
+            <div class="faq-item" onclick="this.classList.toggle('active')">
+                <div class="py-6 flex justify-between items-center cursor-pointer font-bold">
+                    <span>
+                        <span class="lang-en">Does the recipient need an app?</span>
+                        <span class="lang-eth">መረጃውን የሚቀበለው ሰው አፕሊኬሽን ያስፈልገዋል?</span>
+                    </span>
+                    <i class="fa-solid fa-chevron-down text-blue-600"></i>
+                </div>
+                <div class="faq-answer">
+                    <span class="lang-en">No. It works natively on all modern phones.</span>
+                    <span class="lang-eth">አያስፈልገውም። በሁሉም ዘመናዊ ስልኮች ላይ በቀጥታ ይሰራል።</span>
+                </div>
+            </div>
+            <div class="faq-item" onclick="this.classList.toggle('active')">
+                <div class="py-6 flex justify-between items-center cursor-pointer font-bold">
+                    <span>
+                        <span class="lang-en">How long does delivery take?</span>
+                        <span class="lang-eth">ለማድረስ ምን ያህል ጊዜ ይፈጃል?</span>
+                    </span>
+                    <i class="fa-solid fa-chevron-down text-blue-600"></i>
+                </div>
+                <div class="faq-answer">
+                    <span class="lang-en">Inside Addis Ababa: 24-48 hours. Regional: 3-5 days.</span>
+                    <span class="lang-eth">በአዲስ አበባ ውስጥ፦ ከ24 እስከ 48 ሰአታት። በክልል፦ ከ3 እስከ 5 ቀናት።</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-16 text-center border-t border-gray-100">
+        <div class="text-xl font-black mb-4 tracking-tighter uppercase">FINEDATA<span class="text-blue-600">.et</span></div>
+        <p class="text-gray-400 text-[10px] font-bold uppercase tracking-[0.4em]">Addis Ababa, Ethiopia &bull; +251 99 116 8917</p>
+        <p class="mt-8 text-gray-300 text-[10px] font-bold uppercase tracking-widest">&copy; 2025 FineData ET</p>
     </footer>
 
     <script>
         function toggleLang() {
             const body = document.body;
-            const btn = document.getElementById('langToggle');
+            const btn = document.getElementById('langBtn');
             body.classList.toggle('amharic');
             
-            if (body.classList.contains('amharic')) {
+            if(body.classList.contains('amharic')) {
                 btn.innerText = "English";
-                btn.style.backgroundColor = "#1a1a1a";
             } else {
                 btn.innerText = "አማርኛ";
-                btn.style.backgroundColor = "#2563eb";
             }
         }
 
-        function updatePrice() {
-            const q = document.getElementById('qIn').value;
-            document.getElementById('qDisplay').innerText = q;
+        function calc() {
+            const q = document.getElementById('qRange').value;
+            document.getElementById('qNum').innerText = q;
             let p = q >= 10 ? 1000 : (q >= 5 ? 1100 : 1200);
-            document.getElementById('tDisplay').innerText = (q * p).toLocaleString();
+            document.getElementById('totalPrice').innerText = (q * p).toLocaleString();
+            document.getElementById('unitPrice').innerText = p.toLocaleString();
         }
     </script>
 </body>
