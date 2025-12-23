@@ -1,183 +1,216 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FineData | Premium NFC Smart Cards Ethiopia</title>
+    <title>FineData | Next-Gen NFC Smart Cards Ethiopia</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=Noto+Sans+Ethiopic:wght@400;700;900&display=swap');
         
-        :root { --primary: #2563eb; --accent: #7c3aed; }
-        body { font-family: 'Plus Jakarta Sans', 'Noto Sans Ethiopic', sans-serif; scroll-behavior: smooth; }
-        
-        .glass-nav { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
-        .text-gradient { background: linear-gradient(135deg, #1e293b 0%, var(--primary) 50%, var(--accent) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        
-        .floating { animation: float 6s ease-in-out infinite; }
-        @keyframes float { 0%, 100% { transform: translateY(0) rotate(2deg); } 50% { transform: translateY(-20px) rotate(-2deg); } }
+        :root { 
+            --primary: #2563eb; 
+            --accent: #7c3aed; 
+            --glass: rgba(255, 255, 255, 0.7);
+        }
 
-        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+        body { font-family: 'Plus Jakarta Sans', 'Noto Sans Ethiopic', sans-serif; }
+        
+        /* Smooth Gradient Text */
+        .text-gradient { 
+            background: linear-gradient(135deg, #0f172a 0%, #2563eb 50%, #7c3aed 100%); 
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent; 
+        }
+
+        /* Premium Card Shimmer Effect */
+        .nfc-card {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .nfc-card::before {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%;
+            width: 200%; height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.05), transparent);
+            transform: rotate(45deg);
+            animation: shimmer 4s infinite;
+        }
+        @keyframes shimmer { 0% { transform: translateX(-100%) rotate(45deg); } 100% { transform: translateX(100%) rotate(45deg); } }
+
+        /* Reveal on Scroll */
+        .reveal { opacity: 0; transform: translateY(20px); transition: all 0.6s ease-out; }
         .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        /* Custom Slider */
+        input[type=range] { -webkit-appearance: none; background: transparent; }
+        input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; height: 28px; width: 28px; border-radius: 50%; background: #2563eb; cursor: pointer; border: 4px solid white; box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.4); margin-top: -10px; }
+        input[type=range]::-webkit-slider-runnable-track { height: 8px; background: #e2e8f0; border-radius: 10px; }
 
         .lang-eth { display: none; }
         body.amharic .lang-en { display: none; }
         body.amharic .lang-eth { display: block; }
         body.amharic { font-family: 'Noto Sans Ethiopic', sans-serif; }
-
-        input[type=range] { -webkit-appearance: none; width: 100%; background: transparent; }
-        input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; height: 24px; width: 24px; border-radius: 50%; background: #2563eb; cursor: pointer; margin-top: -8px; box-shadow: 0 0 10px rgba(37, 99, 235, 0.3); }
-        input[type=range]::-webkit-slider-runnable-track { width: 100%; height: 8px; background: #e2e8f0; border-radius: 4px; }
+        
+        .bento-card { transition: all 0.3s ease; border: 1px solid rgba(0,0,0,0.05); }
+        .bento-card:hover { transform: translateY(-5px); box-shadow: 0 20px 25px -5px rgba(0,0,0,0.05); }
     </style>
 </head>
-<body class="bg-white text-slate-900 overflow-x-hidden">
+<body class="bg-[#fcfcfd] text-slate-900 selection:bg-blue-100">
 
-    <nav class="fixed w-full z-50 glass-nav border-b border-slate-100 px-6">
-        <div class="max-w-7xl mx-auto h-20 flex justify-between items-center">
-            <div class="text-2xl font-black tracking-tighter text-blue-600">FINEDATA<span class="text-slate-400">.et</span></div>
+    <nav class="fixed w-full z-[100] px-6 py-4">
+        <div class="max-w-6xl mx-auto bg-white/70 backdrop-blur-xl border border-white/20 shadow-sm rounded-3xl px-8 h-16 flex justify-between items-center">
+            <div class="text-xl font-black tracking-tighter flex items-center gap-2">
+                <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center text-white">
+                    <i class="fa-solid fa-bolt-lightning text-sm"></i>
+                </div>
+                FINEDATA<span class="text-blue-600">.et</span>
+            </div>
+            
             <div class="flex items-center gap-4">
-                <button onclick="toggleLanguage()" class="text-xs font-bold uppercase tracking-widest bg-slate-100 px-4 py-2 rounded-full hover:bg-slate-200 transition-all">
-                    <span class="lang-en">አማርኛ</span><span class="lang-eth">English</span>
+                <button onclick="toggleLanguage()" class="text-[10px] font-bold uppercase tracking-widest bg-slate-100 hover:bg-slate-200 px-4 py-2 rounded-full transition-all">
+                    <span class="lang-en">Amharic</span><span class="lang-eth">English</span>
                 </button>
-                <a href="#order" class="hidden sm:block bg-slate-900 text-white px-6 py-2.5 rounded-xl text-xs font-black uppercase tracking-widest hover:bg-blue-600 transition-all">
-                    <span class="lang-en">Order Now</span><span class="lang-eth">አሁኑኑ ይዘዙ</span>
+                <a href="#order" class="bg-slate-900 text-white px-5 py-2 rounded-2xl text-[11px] font-bold uppercase tracking-wider hover:bg-blue-600 transition-all shadow-lg shadow-slate-200">
+                    <span class="lang-en">Order</span><span class="lang-eth">ይዘዙ</span>
                 </a>
             </div>
         </div>
     </nav>
 
-    <section class="relative pt-40 pb-20 px-6 overflow-hidden">
-        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-[500px] bg-blue-50 rounded-full blur-[120px] -z-10 opacity-70"></div>
-        <div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
+    <main class="relative pt-32 pb-20 px-6 overflow-hidden">
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
             <div class="reveal">
-                <div class="inline-block mb-6 px-4 py-1.5 bg-blue-600 text-white rounded-full text-[10px] font-black uppercase tracking-widest">
-                    <span class="lang-en">The Future of Networking</span>
-                </div>
-                <h1 class="text-5xl sm:text-7xl font-black leading-[0.9] mb-6">
-                    <span class="lang-en">Tap to <br><span class="text-gradient">Connect.</span></span>
-                    <span class="lang-eth text-gradient">ይኩት፣ <br>ይገናኙ።</span>
+                <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 text-blue-600 text-[11px] font-bold uppercase tracking-widest mb-8">
+                    <span class="relative flex h-2 w-2">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-600"></span>
+                    </span>
+                    <span class="lang-en">In Stock & Ready to ship</span>
+                    <span class="lang-eth">አሁን ዝግጁ ነው</span>
+                </span>
+                <h1 class="text-6xl sm:text-8xl font-black leading-[0.85] tracking-tight mb-8">
+                    <span class="lang-en">Network <br><span class="text-gradient">Faster.</span></span>
+                    <span class="lang-eth text-gradient">ፈጥነው <br>ይገናኙ።</span>
                 </h1>
-                <p class="text-slate-500 text-lg sm:text-xl mb-10 font-medium max-w-lg leading-relaxed">
-                    <span class="lang-en">One smart card to share everything. Your phone number, social links, and portfolio shared in 1 second.</span>
-                    <span class="lang-eth">ሁሉንም መረጃዎን በአንድ ስማርት ካርድ ብቻ ያጋሩ። ስልክ ቁጥርዎን፣ ድህረ ገጽዎን እና ሌሎችንም በአንድ ሰከንድ ውስጥ ያስተላልፉ።</span>
+                <p class="text-slate-500 text-lg sm:text-xl mb-10 max-w-md leading-relaxed font-medium">
+                    <span class="lang-en">The last business card you'll ever buy. Tap to instantly share social media, contact info, and more.</span>
+                    <span class="lang-eth">መረጃዎን ለማጋራት ስልክዎን ካርዱ ላይ ያስጠጉ። ለንግድ ስራዎ ዘመናዊ መፍትሄ።</span>
                 </p>
-                <div class="flex flex-wrap gap-4">
-                    <button onclick="toggleModal()" class="bg-blue-600 text-white px-10 py-5 rounded-2xl font-black shadow-2xl shadow-blue-200 hover:bg-blue-700 transition-all transform hover:scale-105">
-                        <span class="lang-en">Order Card</span><span class="lang-eth">ካርድ ይዘዙ</span>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <button onclick="document.getElementById('order').scrollIntoView()" class="bg-blue-600 text-white px-10 py-5 rounded-2xl font-bold shadow-xl shadow-blue-200 hover:shadow-blue-300 transition-all hover:-translate-y-1">
+                        <span class="lang-en">Get Your Card — 1,200 ETB</span>
+                        <span class="lang-eth">ካርድዎን ያግኙ — 1,200 ብር</span>
                     </button>
                 </div>
             </div>
-            
-            <div class="relative h-[400px] flex items-center justify-center reveal">
-                <div class="floating w-72 h-44 bg-gradient-to-br from-slate-900 to-slate-800 rounded-2xl shadow-2xl p-8 text-white relative border border-white/10 z-10">
+
+            <div class="relative reveal flex justify-center lg:justify-end" style="perspective: 1000px;">
+                <div class="nfc-card w-80 h-48 sm:w-96 sm:h-56 rounded-3xl p-8 text-white shadow-[0_50px_100px_-20px_rgba(0,0,0,0.3)] hover:rotate-y-12">
                     <div class="flex justify-between items-start">
-                        <div class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center">
-                            <i class="fa-solid fa-wifi rotate-90 text-lg"></i>
+                        <div class="space-y-1">
+                            <div class="w-12 h-8 bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-md opacity-80"></div>
+                            <i class="fa-solid fa-wifi rotate-90 text-xl text-blue-400"></i>
                         </div>
-                        <span class="text-xl font-black italic">FINEDATA</span>
+                        <div class="text-right">
+                            <p class="text-[10px] tracking-[0.3em] font-bold opacity-50">PREMIUM</p>
+                            <p class="font-black italic text-xl">FINEDATA</p>
+                        </div>
                     </div>
-                    <div class="mt-12">
-                        <div class="h-2 w-32 bg-white/20 rounded mb-2"></div>
-                        <div class="h-2 w-20 bg-white/10 rounded"></div>
+                    <div class="mt-auto pt-16">
+                        <p class="text-lg font-bold tracking-widest uppercase">Your Name Here</p>
+                        <p class="text-[10px] opacity-60 uppercase font-medium">Smart NFC Professional</p>
                     </div>
+                </div>
+                <div class="absolute -top-10 -right-10 w-64 h-64 bg-purple-200 rounded-full blur-[100px] -z-10 opacity-50"></div>
+                <div class="absolute -bottom-10 -left-10 w-64 h-64 bg-blue-200 rounded-full blur-[100px] -z-10 opacity-50"></div>
+            </div>
+        </div>
+    </main>
+
+    <section class="py-24 px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="md:col-span-2 bento-card bg-white p-10 rounded-[2.5rem] flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center mb-6">
+                            <i class="fa-solid fa-bolt"></i>
+                        </div>
+                        <h3 class="text-3xl font-black mb-4"><span class="lang-en">Instant Transfer</span><span class="lang-eth">ፈጣን ልውውጥ</span></h3>
+                        <p class="text-slate-500 font-medium">No apps required. Just tap the card to any modern iPhone or Android and your profile pops up instantly.</p>
+                    </div>
+                    <div class="mt-8 pt-8 border-t border-slate-50 flex gap-4">
+                        <img src="https://img.icons8.com/ios-filled/50/2563eb/apple-logo.png" class="w-6 h-6 opacity-30" alt="Apple">
+                        <img src="https://img.icons8.com/ios-filled/50/2563eb/android-os.png" class="w-6 h-6 opacity-30" alt="Android">
+                    </div>
+                </div>
+                <div class="bento-card bg-slate-900 text-white p-10 rounded-[2.5rem]">
+                    <div class="w-12 h-12 bg-white/10 rounded-2xl flex items-center justify-center mb-6 text-blue-400">
+                        <i class="fa-solid fa-infinity"></i>
+                    </div>
+                    <h3 class="text-2xl font-black mb-4">Unlimited Use</h3>
+                    <p class="text-slate-400 text-sm">Update your information anytime for free. Your card stays with you forever.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="learn" class="py-24 bg-slate-50 px-6">
-        <div class="max-w-7xl mx-auto">
-            <div class="grid lg:grid-cols-2 gap-12">
-                <div class="reveal">
-                    <h3 class="text-2xl font-black mb-6"><span class="lang-en">1. What is NFC?</span><span class="lang-eth">1. NFC ምንድን ነው?</span></h3>
-                    <div class="aspect-video rounded-[2.5rem] overflow-hidden shadow-2xl bg-black border-4 border-white">
-                        <iframe class="w-full h-full" src="https://www.youtube.com/embed/eWPtt2hLnJk?si=di30UQuuOlcK3CU7" title="NFC Guide" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    <section id="order" class="py-24 px-6">
+        <div class="max-w-4xl mx-auto bg-white border border-slate-100 shadow-2xl rounded-[3rem] overflow-hidden reveal">
+            <div class="grid md:grid-cols-2">
+                <div class="p-10 md:p-16 bg-slate-50">
+                    <h2 class="text-4xl font-black mb-6">Bulk Pricing</h2>
+                    <p class="text-slate-500 mb-10 font-medium">Ordering for a team? Save up to 20% on bulk orders.</p>
+                    
+                    <div class="space-y-8">
+                        <div>
+                            <div class="flex justify-between mb-4 font-black text-xs uppercase tracking-widest text-slate-400">
+                                <span>Quantity</span>
+                                <span class="text-blue-600 text-lg" id="cardQty">1</span>
+                            </div>
+                            <input type="range" min="1" max="50" value="1" id="qtySlider" oninput="calculate()" class="w-full">
+                        </div>
+                        <div class="pt-6 border-t border-slate-200">
+                            <div class="flex justify-between items-end">
+                                <div>
+                                    <p class="text-[10px] font-black uppercase text-slate-400">Total Investment</p>
+                                    <p class="text-4xl font-black"><span id="grandTotal">1,200</span> <span class="text-sm">ETB</span></p>
+                                </div>
+                                <p class="text-xs font-bold text-green-500 bg-green-50 px-3 py-1 rounded-full"><span id="unitPrice">1,200</span>/card</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="reveal" style="transition-delay: 0.2s">
-                    <h3 class="text-2xl font-black mb-6"><span class="lang-en">2. How to Setup</span><span class="lang-eth">2. እንዴት እናዘጋጃለን?</span></h3>
-                    <div class="aspect-video rounded-[2.5rem] overflow-hidden shadow-2xl bg-black border-4 border-white">
-                        <iframe class="w-full h-full" src="https://www.youtube.com/embed/BZRYHNmB9RI?si=-9tPYmP5_IIXG0UV" title="NFC Setup" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                <div class="p-10 md:p-16 flex flex-col justify-center items-center text-center">
+                    <div class="w-20 h-20 bg-blue-600 rounded-3xl flex items-center justify-center text-white text-3xl mb-8 shadow-xl shadow-blue-100">
+                        <i class="fa-brands fa-telegram"></i>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-20 px-6">
-        <div class="max-w-5xl mx-auto bg-gradient-to-br from-blue-600 to-indigo-700 rounded-[3rem] p-10 sm:p-16 text-center text-white shadow-3xl reveal">
-            <h2 class="text-3xl sm:text-5xl font-black mb-6">
-                <span class="lang-en">Too busy? We will set it up for you!</span>
-                <span class="lang-eth">ጊዜ የለዎትም? እኛ እናዘጋጅልዎታለን!</span>
-            </h2>
-            <p class="text-blue-100 text-lg mb-10 max-w-3xl mx-auto leading-relaxed">
-                <span class="lang-en">Simply send us your info and logo. Our team will handle everything so your card arrives 100% ready to use.</span>
-                <span class="lang-eth">መረጃዎን እና ሎጎዎን ብቻ ይላኩልን። እኛ ሁሉንም ነገር አዘጋጅተን ዝግጁ የሆነ ካርድ እናደርስዎታለን።</span>
-            </p>
-            <a href="https://t.me/finedata_et_bot" class="inline-block bg-white text-blue-600 px-12 py-5 rounded-2xl font-black uppercase tracking-widest hover:bg-blue-50 transition-all shadow-xl">
-                <span class="lang-en">Chat with Support</span><span class="lang-eth">እርዳታ ለማግኘት ያግኙን</span>
-            </a>
-        </div>
-    </section>
-
-    <section id="order" class="py-24 px-6 bg-white">
-        <div class="max-w-4xl mx-auto bg-slate-900 rounded-[3rem] p-8 sm:p-16 text-white shadow-3xl reveal">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-black mb-2"><span class="lang-en">Pricing Calculator</span></h2>
-                <p class="text-blue-400 font-bold uppercase tracking-widest text-xs">Bulk discounts applied automatically</p>
-            </div>
-            <div class="space-y-10">
-                <div class="bg-white/5 p-8 rounded-3xl border border-white/10">
-                    <div class="flex justify-between mb-6 font-black">
-                        <span class="text-slate-400">Cards:</span>
-                        <span class="text-3xl text-blue-400" id="cardQty">1</span>
-                    </div>
-                    <input type="range" min="1" max="50" value="1" id="qtySlider" oninput="calculate()" class="mb-4">
-                </div>
-                <div class="grid sm:grid-cols-2 gap-4">
-                    <div class="p-6 bg-white/5 rounded-2xl border border-white/10 text-center">
-                        <p class="text-[10px] text-slate-500 uppercase font-black mb-1">Unit Price</p>
-                        <p class="text-2xl font-black"><span id="unitPrice">1,200</span> ETB</p>
-                    </div>
-                    <div class="p-6 bg-blue-600 rounded-2xl text-center">
-                        <p class="text-[10px] text-blue-100 uppercase font-black mb-1">Total</p>
-                        <p class="text-2xl font-black"><span id="grandTotal">1,200</span> ETB</p>
-                    </div>
-                </div>
-                <a href="https://t.me/finedata_et_bot" class="block text-center w-full py-6 bg-white text-slate-900 rounded-2xl font-black uppercase tracking-widest hover:bg-blue-400 transition-all">
-                    <span class="lang-en">Order via Telegram</span><span class="lang-eth">በቴሌግራም ይዘዙ</span>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <div id="contactModal" class="fixed inset-0 flex items-center justify-center p-6 z-[100] opacity-0 pointer-events-none transition-all duration-300">
-        <div class="absolute inset-0 bg-slate-950/80 backdrop-blur-xl" onclick="toggleModal()"></div>
-        <div class="bg-white w-full max-w-lg rounded-[3rem] relative z-10 p-10 shadow-2xl">
-            <div class="text-center">
-                <h2 class="text-3xl font-black mb-6">Contact Us</h2>
-                <div class="space-y-4">
-                    <a href="https://t.me/finedata_et_bot" target="_blank" class="flex items-center gap-5 p-6 bg-slate-50 rounded-2xl border border-slate-100 hover:scale-105 transition-transform">
-                        <div class="w-12 h-12 bg-blue-500 text-white rounded-xl flex items-center justify-center"><i class="fa-brands fa-telegram text-xl"></i></div>
-                        <div class="text-left"><p class="text-[10px] font-black uppercase tracking-widest text-slate-400">Message Bot</p><p class="font-black text-lg">@finedata_et_bot</p></div>
-                    </a>
-                    <a href="tel:+251991168917" class="flex items-center gap-5 p-6 bg-slate-900 text-white rounded-2xl hover:scale-105 transition-transform">
-                        <div class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center"><i class="fa-solid fa-phone"></i></div>
-                        <div class="text-left"><p class="text-[10px] font-black opacity-50 uppercase tracking-widest">Call Now</p><p class="font-black text-lg">+251 99 116 8917</p></div>
+                    <h3 class="text-2xl font-black mb-4">Ready to Order?</h3>
+                    <p class="text-slate-500 mb-8 text-sm">Our Telegram bot will guide you through the design and delivery process.</p>
+                    <a href="https://t.me/finedata_et_bot" class="w-full bg-slate-900 text-white py-5 rounded-2xl font-black uppercase tracking-widest hover:bg-blue-600 transition-all">
+                        Start Order Now
                     </a>
                 </div>
-                <button onclick="toggleModal()" class="mt-8 text-slate-400 font-bold uppercase text-xs tracking-widest">Close</button>
             </div>
         </div>
-    </div>
+    </section>
+
+    <footer class="py-12 border-t border-slate-100 text-center">
+        <p class="text-xs font-bold text-slate-400 tracking-widest uppercase mb-4">© 2025 FineData Ethiopia</p>
+        <div class="flex justify-center gap-6 text-slate-300">
+            <i class="fa-brands fa-instagram hover:text-blue-600 cursor-pointer"></i>
+            <i class="fa-brands fa-linkedin hover:text-blue-600 cursor-pointer"></i>
+            <i class="fa-brands fa-tiktok hover:text-blue-600 cursor-pointer"></i>
+        </div>
+    </footer>
 
     <script>
         function toggleLanguage() { document.body.classList.toggle('amharic'); }
-        function toggleModal() {
-            const m = document.getElementById('contactModal');
-            m.classList.toggle('opacity-0'); m.classList.toggle('pointer-events-none');
-        }
+        
         function calculate() {
             const qty = parseInt(document.getElementById('qtySlider').value);
             document.getElementById('cardQty').innerText = qty;
@@ -185,6 +218,7 @@
             document.getElementById('unitPrice').innerText = unit.toLocaleString();
             document.getElementById('grandTotal').innerText = (qty * unit).toLocaleString();
         }
+
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
         }, { threshold: 0.1 });
