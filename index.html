@@ -12,7 +12,6 @@
         :root { --blue: #2563eb; }
         body { font-family: 'Plus Jakarta Sans', sans-serif; background: #fff; color: #111; scroll-behavior: smooth; overflow-x: hidden; }
         
-        /* Language Toggle Logic */
         .lang-eth { display: none; }
         body.amharic { font-family: 'Noto Sans Ethiopic', sans-serif; }
         body.amharic .lang-en { display: none; }
@@ -22,7 +21,6 @@
         .text-gray-500 { color: #475569 !important; }
         .text-gray-400 { color: #334155 !important; }
 
-        /* Professional UI Elements */
         .glass-nav { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(15px); border-bottom: 1px solid rgba(0,0,0,0.05); }
         .hero-bg { background: radial-gradient(circle at 50% 50%, #f8fafc 0%, #ffffff 100%); }
         
@@ -34,11 +32,6 @@
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
         }
         .nfc-card:hover { transform: rotateY(10deg) rotateX(5deg); }
-
-        .faq-item { border-bottom: 1px solid #f1f5f9; }
-        .faq-answer { max-height: 0; overflow: hidden; transition: all 0.3s ease-out; color: #475569; }
-        .faq-item.active .faq-answer { max-height: 300px; padding-bottom: 24px; }
-        .faq-item.active .fa-chevron-down { transform: rotate(180deg); }
 
         .video-aspect { position: relative; padding-bottom: 56.25%; height: 0; border-radius: 24px; overflow: hidden; background: #000; }
         .video-aspect iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
@@ -63,9 +56,7 @@
         <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
             <div class="text-xl font-black tracking-tighter uppercase">FINEDATA<span class="text-blue-600">.et</span></div>
             <div class="flex items-center gap-4">
-                <button id="langBtn" onclick="toggleLang()" class="bg-gray-100 text-gray-900 px-5 py-2 rounded-full text-[11px] font-bold uppercase tracking-widest transition-all hover:bg-gray-200">
-                    አማርኛ
-                </button>
+                <button id="langBtn" onclick="toggleLang()" class="bg-gray-100 text-gray-900 px-5 py-2 rounded-full text-[11px] font-bold uppercase tracking-widest transition-all hover:bg-gray-200">አማርኛ</button>
                 <a href="#order" class="bg-blue-600 text-white px-6 py-2.5 rounded-xl text-xs font-bold uppercase tracking-widest shadow-lg shadow-blue-100 active:scale-95 transition-all">
                     <span class="lang-en">Order</span><span class="lang-eth">ይዘዙ</span>
                 </a>
@@ -76,9 +67,7 @@
     <section class="hero-bg pt-40 pb-20 px-6">
         <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
             <div>
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 text-blue-600 text-[11px] font-black uppercase tracking-widest mb-6">
-                    Professional NFC Solutions
-                </div>
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 text-blue-600 text-[11px] font-black uppercase tracking-widest mb-6">Professional NFC Solutions</div>
                 <h1 class="text-5xl lg:text-7xl font-extrabold leading-[1.1] mb-8 tracking-tight">
                     <span class="lang-en">Elevate Your <br><span class="text-blue-600">Professional Identity.</span></span>
                     <span class="lang-eth">የንግድ ግንኙነትዎን <br><span class="text-blue-600">ያዘምኑ።</span></span>
@@ -87,11 +76,9 @@
                     <span class="lang-en">Stop wasting money on paper. One FineData card shares your info instantly with a tap. No apps, no friction, just results.</span>
                     <span class="lang-eth">በወረቀት ካርድ ላይ ገንዘብዎን አያባክኑ። አንድ የ FineData ካርድ መረጃዎን በአንድ ንክኪ ያጋራል። ምንም አይነት አፕሊኬሽን አይፈልግም።</span>
                 </p>
-                <div class="flex gap-4">
-                    <a href="#order" class="bg-gray-900 text-white px-10 py-5 rounded-2xl font-bold uppercase text-xs tracking-widest shadow-xl">
-                        <span class="lang-en">Get Started</span><span class="lang-eth">ይጀምሩ</span>
-                    </a>
-                </div>
+                <a href="#order" class="bg-gray-900 text-white px-10 py-5 rounded-2xl font-bold uppercase text-xs tracking-widest shadow-xl">
+                    <span class="lang-en">Get Started</span><span class="lang-eth">ይጀምሩ</span>
+                </a>
             </div>
             <div class="card-perspective flex justify-center">
                 <div class="nfc-card w-full max-w-sm aspect-[1.58/1] rounded-[24px] p-10 flex flex-col justify-between text-white border border-white/10 relative overflow-hidden">
@@ -103,7 +90,6 @@
                         <p class="text-2xl font-bold tracking-widest">NFC SMART CARD</p>
                         <p class="text-[10px] uppercase font-bold text-blue-500 tracking-[0.4em] mt-1">Ethiopia Edition</p>
                     </div>
-                    <div class="absolute -bottom-10 -right-10 w-40 h-40 bg-blue-600/20 rounded-full blur-3xl"></div>
                 </div>
             </div>
         </div>
@@ -112,53 +98,50 @@
     <section class="py-24 px-6 bg-white">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16">
-                <h2 class="text-3xl font-black uppercase tracking-tighter mb-4">
-                    <span class="lang-en">How It Works</span><span class="lang-eth">እንዴት እንደሚሰራ</span>
-                </h2>
+                <h2 class="text-3xl font-black uppercase tracking-tighter mb-4"><span class="lang-en">How It Works</span><span class="lang-eth">እንዴት እንደሚሰራ</span></h2>
                 <div class="w-20 h-1.5 bg-blue-600 mx-auto rounded-full"></div>
             </div>
             <div class="grid md:grid-cols-3 gap-8">
                 <div class="step-card p-8 rounded-[32px] text-center">
                     <div class="w-16 h-16 bg-blue-600 text-white rounded-2xl flex items-center justify-center text-2xl font-black mx-auto mb-6">1</div>
-                    <h3 class="font-bold uppercase tracking-widest mb-3">
-                        <span class="lang-en">Order Card</span><span class="lang-eth">ካርድዎን ይዘዙ</span>
-                    </h3>
-                    <p class="text-sm leading-relaxed text-gray-500">
-                        <span class="lang-en">Select your quantity and contact us via Telegram or WhatsApp to place your order.</span>
-                        <span class="lang-eth">የሚፈልጉትን ብዛት ይምረጡና በቴሌግራም ወይም በዋትስአፕ ይዘዙን።</span>
-                    </p>
+                    <h3 class="font-bold uppercase tracking-widest mb-3"><span class="lang-en">Order</span><span class="lang-eth">ይዘዙ</span></h3>
+                    <p class="text-sm text-gray-500"><span class="lang-en">Choose quantity and order via WhatsApp/Telegram.</span><span class="lang-eth">የሚፈልጉትን ብዛት ይምረጡና በዋትስአፕ ወይም ቴሌግራም ይዘዙ።</span></p>
                 </div>
                 <div class="step-card p-8 rounded-[32px] text-center">
                     <div class="w-16 h-16 bg-blue-600 text-white rounded-2xl flex items-center justify-center text-2xl font-black mx-auto mb-6">2</div>
-                    <h3 class="font-bold uppercase tracking-widest mb-3">
-                        <span class="lang-en">Setup Profile</span><span class="lang-eth">መረጃዎን ያስገቡ</span>
-                    </h3>
-                    <p class="text-sm leading-relaxed text-gray-500">
-                        <span class="lang-en">Link your phone number, social media, and business details to your smart card.</span>
-                        <span class="lang-eth">ስልክ ቁጥርዎን፣ ማህበራዊ ሚዲያዎን እና ሌሎች የንግድ መረጃዎችን ከካርድዎ ጋር ያገናኙ።</span>
-                    </p>
+                    <h3 class="font-bold uppercase tracking-widest mb-3"><span class="lang-en">Setup</span><span class="lang-eth">ያዘጋጁ</span></h3>
+                    <p class="text-sm text-gray-500"><span class="lang-en">Add your contact info and social media links.</span><span class="lang-eth">የስልክ ቁጥርዎን እና ሌሎች መረጃዎችን ያስገቡ።</span></p>
                 </div>
                 <div class="step-card p-8 rounded-[32px] text-center">
                     <div class="w-16 h-16 bg-blue-600 text-white rounded-2xl flex items-center justify-center text-2xl font-black mx-auto mb-6">3</div>
-                    <h3 class="font-bold uppercase tracking-widest mb-3">
-                        <span class="lang-en">Tap & Share</span><span class="lang-eth">ነክተው ያጋሩ</span>
-                    </h3>
-                    <p class="text-sm leading-relaxed text-gray-500">
-                        <span class="lang-en">Simply tap your card on any smartphone to share your info instantly. No app needed!</span>
-                        <span class="lang-eth">ካርድዎን በማንኛውም ስልክ ላይ በማስነካት ብቻ መረጃዎን በቅጽበት ያጋሩ።</span>
-                    </p>
+                    <h3 class="font-bold uppercase tracking-widest mb-3"><span class="lang-en">Tap</span><span class="lang-eth">ያንኩ</span></h3>
+                    <p class="text-sm text-gray-500"><span class="lang-en">Tap on any smartphone to share instantly.</span><span class="lang-eth">ስልኮች ላይ በማስነካት መረጃዎን በቅጽበት ያጋሩ።</span></p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="order" class="py-24 px-6 bg-gray-50">
+    <section class="py-24 px-6 bg-gray-50">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl font-black text-center mb-16 uppercase tracking-tighter"><span class="lang-en">Watch in Action</span><span class="lang-eth">በተግባር ይመልከቱ</span></h2>
+            <div class="grid lg:grid-cols-2 gap-10">
+                <div class="bg-white p-5 rounded-[32px] shadow-sm">
+                    <div class="video-aspect mb-6"><iframe src="https://www.youtube.com/embed/eWPtt2hLnJk"></iframe></div>
+                    <p class="px-4 font-bold text-sm uppercase text-gray-400 tracking-widest">01. NFC Demo</p>
+                </div>
+                <div class="bg-white p-5 rounded-[32px] shadow-sm">
+                    <div class="video-aspect mb-6"><iframe src="https://www.youtube.com/embed/BZRYHNmB9RI"></iframe></div>
+                    <p class="px-4 font-bold text-sm uppercase text-gray-400 tracking-widest">02. Setup Guide</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="order" class="py-24 px-6 bg-white">
         <div class="max-w-4xl mx-auto bg-gray-900 rounded-[48px] p-10 md:p-20 text-white relative overflow-hidden">
             <div class="relative z-10 grid lg:grid-cols-2 gap-16 items-center">
                 <div>
-                    <h2 class="text-4xl font-black mb-6 uppercase tracking-tight">
-                        <span class="lang-en">Pricing</span><span class="lang-eth">ዋጋ</span>
-                    </h2>
+                    <h2 class="text-4xl font-black mb-6 uppercase tracking-tight"><span class="lang-en">Pricing</span><span class="lang-eth">ዋጋ</span></h2>
                     <div class="space-y-12">
                         <div>
                             <div class="flex justify-between mb-4 font-black text-[10px] uppercase tracking-widest text-gray-500">
@@ -172,26 +155,14 @@
                                 <p class="text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-1">Total ETB</p>
                                 <p class="text-5xl font-black" id="totalPrice">1,200</p>
                             </div>
-                            <div class="text-right">
-                                <p class="text-sm font-bold opacity-60"><span id="unitPrice">1,200</span> ETB / Unit</p>
-                            </div>
+                            <p class="text-sm font-bold opacity-60"><span id="unitPrice">1,200</span> ETB / Unit</p>
                         </div>
                     </div>
                 </div>
-                
                 <div class="flex flex-col gap-4">
-                    <a href="https://wa.me/251960375738" target="_blank" class="w-full bg-[#25d366] hover:bg-[#1fb355] text-white py-6 rounded-2xl font-black uppercase tracking-widest text-center transition-all">
-                        <i class="fa-brands fa-whatsapp text-xl mr-2"></i>
-                        <span class="lang-en">Order via WhatsApp</span><span class="lang-eth">በዋትስአፕ ይዘዙ</span>
-                    </a>
-                    <a href="https://t.me/finedata_et_bot" class="w-full bg-blue-600 hover:bg-blue-700 text-white py-6 rounded-2xl font-black uppercase tracking-widest text-center transition-all">
-                        <i class="fa-brands fa-telegram text-xl mr-2"></i>
-                        <span class="lang-en">Order via Telegram</span><span class="lang-eth">በቴሌግራም ይዘዙ</span>
-                    </a>
-                    <a href="tel:+251960375738" class="flex items-center justify-center gap-3 bg-white/5 py-4 rounded-xl border border-white/10">
-                        <i class="fa-solid fa-phone text-blue-500"></i>
-                        <span class="font-bold">+251 960 37 5738</span>
-                    </a>
+                    <a href="https://wa.me/251960375738" target="_blank" class="w-full bg-[#25d366] hover:bg-[#1fb355] text-white py-6 rounded-2xl font-black uppercase tracking-widest text-center transition-all"><i class="fa-brands fa-whatsapp text-xl mr-2"></i><span class="lang-en">WhatsApp</span><span class="lang-eth">በዋትስአፕ</span></a>
+                    <a href="https://t.me/finedata_et_bot" class="w-full bg-blue-600 hover:bg-blue-700 text-white py-6 rounded-2xl font-black uppercase tracking-widest text-center transition-all"><i class="fa-brands fa-telegram text-xl mr-2"></i><span class="lang-en">Telegram</span><span class="lang-eth">በቴሌግራም</span></a>
+                    <a href="tel:+251960375738" class="text-center py-4 bg-white/5 rounded-xl border border-white/10 font-bold">+251 960 37 5738</a>
                 </div>
             </div>
         </div>
@@ -199,16 +170,14 @@
 
     <footer class="py-16 text-center border-t border-gray-100">
         <div class="text-xl font-black mb-4 tracking-tighter uppercase">FINEDATA<span class="text-blue-600">.et</span></div>
-        <p class="text-gray-400 text-[10px] font-bold uppercase tracking-[0.4em]">Addis Ababa, Ethiopia</p>
+        <p class="text-gray-400 text-[10px] font-bold uppercase tracking-widest">Addis Ababa, Ethiopia</p>
         <p class="mt-8 text-gray-300 text-[10px] font-bold uppercase tracking-widest">&copy; 2025 FineData ET</p>
     </footer>
 
     <script>
         function toggleLang() {
-            const body = document.body;
-            const btn = document.getElementById('langBtn');
-            body.classList.toggle('amharic');
-            btn.innerText = body.classList.contains('amharic') ? "English" : "አማርኛ";
+            document.body.classList.toggle('amharic');
+            document.getElementById('langBtn').innerText = document.body.classList.contains('amharic') ? "English" : "አማርኛ";
         }
         function calc() {
             const q = document.getElementById('qRange').value;
