@@ -12,17 +12,14 @@
         :root { --blue: #2563eb; }
         body { font-family: 'Plus Jakarta Sans', sans-serif; background: #fff; color: #111; scroll-behavior: smooth; overflow-x: hidden; }
         
-        /* Language Toggle Logic */
         .lang-eth { display: none; }
         body.amharic { font-family: 'Noto Sans Ethiopic', sans-serif; }
         body.amharic .lang-en { display: none; }
         body.amharic .lang-eth { display: block; }
 
-        /* Professional UI Elements */
         .glass-nav { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(15px); border-bottom: 1px solid rgba(0,0,0,0.05); }
         .hero-bg { background: radial-gradient(circle at 50% 50%, #f8fafc 0%, #ffffff 100%); }
         
-        /* 3D Premium Card */
         .card-perspective { perspective: 1000px; }
         .nfc-card {
             background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
@@ -32,18 +29,41 @@
         }
         .nfc-card:hover { transform: rotateY(10deg) rotateX(5deg); }
 
-        /* FAQ */
         .faq-item { border-bottom: 1px solid #f1f5f9; }
         .faq-answer { max-height: 0; overflow: hidden; transition: all 0.3s ease-out; color: #64748b; }
         .faq-item.active .faq-answer { max-height: 300px; padding-bottom: 24px; }
         .faq-item.active .fa-chevron-down { transform: rotate(180deg); }
 
-        /* Video Containers */
-        .video-aspect { position: relative; padding-bottom: 56.25%; height: 0; border-radius: 24px; overflow: hidden; background: #000; }
+        .video-aspect { position: relative; padding-bottom: 56.25%; height: 0; border-radius: 24px; overflow-x: hidden; background: #000; }
         .video-aspect iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+
+        /* Floating WhatsApp Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25d366;
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 3px #999;
+            z-index: 100;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        .whatsapp-float:hover { transform: scale(1.1); background-color: #128c7e; }
     </style>
 </head>
 <body class="antialiased">
+
+    <a href="https://wa.me/251960375738" class="whatsapp-float" target="_blank">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
 
     <nav class="fixed top-0 w-full z-50 glass-nav">
         <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
@@ -121,28 +141,6 @@
         </div>
     </section>
 
-    <section class="py-24 px-6 bg-gray-50">
-        <div class="max-w-7xl mx-auto">
-            <h2 class="text-3xl font-black text-center mb-16 uppercase tracking-tighter">
-                <span class="lang-en">Learn More</span><span class="lang-eth">ተጨማሪ ይወቁ</span>
-            </h2>
-            <div class="grid lg:grid-cols-2 gap-10">
-                <div class="bg-white p-5 rounded-[32px] shadow-sm">
-                    <div class="video-aspect mb-6">
-                        <iframe src="https://www.youtube.com/embed/eWPtt2hLnJk"></iframe>
-                    </div>
-                    <p class="px-4 font-bold text-sm uppercase text-gray-400 tracking-widest">01. NFC Demo</p>
-                </div>
-                <div class="bg-white p-5 rounded-[32px] shadow-sm">
-                    <div class="video-aspect mb-6">
-                        <iframe src="https://www.youtube.com/embed/BZRYHNmB9RI"></iframe>
-                    </div>
-                    <p class="px-4 font-bold text-sm uppercase text-gray-400 tracking-widest">02. Setup Guide</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <section id="order" class="py-24 px-6">
         <div class="max-w-4xl mx-auto bg-gray-900 rounded-[48px] p-10 md:p-20 text-white relative overflow-hidden shadow-2xl">
             <div class="relative z-10 grid lg:grid-cols-2 gap-16 items-center">
@@ -170,8 +168,13 @@
                     </div>
                 </div>
                 
-                <div class="flex flex-col gap-4">
-                    <a href="https://t.me/finedata_et_bot" class="w-full bg-blue-600 hover:bg-blue-700 text-white py-6 rounded-2xl font-black uppercase tracking-widest text-center transition-all shadow-xl shadow-blue-900/40">
+                <div class="flex flex-col gap-3">
+                    <a href="https://wa.me/251960375738" target="_blank" class="w-full bg-[#25d366] hover:bg-[#128c7e] text-white py-6 rounded-2xl font-black uppercase tracking-widest text-center transition-all shadow-xl">
+                        <i class="fa-brands fa-whatsapp text-xl mr-2"></i>
+                        <span class="lang-en">Order via WhatsApp</span><span class="lang-eth">በዋትስአፕ ይዘዙ</span>
+                    </a>
+
+                    <a href="https://t.me/finedata_et_bot" class="w-full bg-blue-600 hover:bg-blue-700 text-white py-6 rounded-2xl font-black uppercase tracking-widest text-center transition-all shadow-xl">
                         <i class="fa-brands fa-telegram text-xl mr-2"></i>
                         <span class="lang-en">Order via Telegram</span><span class="lang-eth">በቴሌግራም ይዘዙ</span>
                     </a>
@@ -185,47 +188,11 @@
                                 <i class="fa-solid fa-phone text-blue-500"></i>
                                 <span class="font-bold tracking-wider">+251 960 37 5738</span>
                             </a>
-                            <a href="tel:+251991168917" class="flex items-center justify-center gap-3 bg-white/5 hover:bg-white/10 border border-white/10 py-4 rounded-xl transition-all">
-                                <i class="fa-solid fa-phone text-blue-500"></i>
-                                <span class="font-bold tracking-wider">+251 991 16 8917</span>
-                            </a>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="absolute top-0 right-0 w-64 h-64 bg-blue-600/10 rounded-full blur-[100px]"></div>
-        </div>
-    </section>
-
-    <section class="py-24 px-6 bg-white max-w-3xl mx-auto">
-        <h2 class="text-3xl font-black text-center mb-12 uppercase tracking-tighter">FAQ</h2>
-        <div class="space-y-4">
-            <div class="faq-item" onclick="this.classList.toggle('active')">
-                <div class="py-6 flex justify-between items-center cursor-pointer font-bold">
-                    <span>
-                        <span class="lang-en">Does the recipient need an app?</span>
-                        <span class="lang-eth">መረጃውን የሚቀበለው ሰው አፕሊኬሽን ያስፈልገዋል?</span>
-                    </span>
-                    <i class="fa-solid fa-chevron-down text-blue-600"></i>
-                </div>
-                <div class="faq-answer">
-                    <span class="lang-en">No. It works natively on all modern phones.</span>
-                    <span class="lang-eth">አያስፈልገውም። በሁሉም ዘመናዊ ስልኮች ላይ በቀጥታ ይሰራል።</span>
-                </div>
-            </div>
-            <div class="faq-item" onclick="this.classList.toggle('active')">
-                <div class="py-6 flex justify-between items-center cursor-pointer font-bold">
-                    <span>
-                        <span class="lang-en">How long does delivery take?</span>
-                        <span class="lang-eth">ለማድረስ ምን ያህል ጊዜ ይፈጃል?</span>
-                    </span>
-                    <i class="fa-solid fa-chevron-down text-blue-600"></i>
-                </div>
-                <div class="faq-answer">
-                    <span class="lang-en">Inside Addis Ababa: 24-48 hours. Regional: 3-5 days.</span>
-                    <span class="lang-eth">በአዲስ አበባ ውስጥ፦ ከ24 እስከ 48 ሰአታት። በክልል፦ ከ3 እስከ 5 ቀናት።</span>
-                </div>
-            </div>
         </div>
     </section>
 
@@ -243,12 +210,7 @@
             const body = document.body;
             const btn = document.getElementById('langBtn');
             body.classList.toggle('amharic');
-            
-            if(body.classList.contains('amharic')) {
-                btn.innerText = "English";
-            } else {
-                btn.innerText = "አማርኛ";
-            }
+            btn.innerText = body.classList.contains('amharic') ? "English" : "አማርኛ";
         }
 
         function calc() {
