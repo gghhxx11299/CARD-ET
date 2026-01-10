@@ -1,35 +1,22 @@
 # FineData.et - NFC Digital Business Cards Ethiopia
 
 ## Overview
-FineData provides premium NFC (Near Field Communication) digital business cards in Ethiopia. These cards allow professionals and companies to share contact information, social media profiles, and portfolios via a single tap on a smartphone.
+FineData provides premium NFC (Near Field Communication) digital business cards in Addis Ababa, Ethiopia. These cards allow professionals to share contact information via a single tap.
 
 ## Contact Information
-- **Phone:** +251 991 169 817
+- **Phone (Direct Call):** +251 991 169 817
 - **WhatsApp:** https://wa.me/251991169817
 - **Telegram:** https://t.me/finedata_et_bot
 - **Location:** Addis Ababa, Ethiopia
 
-## Pricing Models
+## Pricing & Delivery
+- **Individual Card:** 1,200 ETB
+- **Delivery Fee:** 200 ETB fixed rate anywhere in Addis Ababa.
+- **Bulk/Corporate Pricing:** - 5-19 units: 1,100 ETB
+  - 20-49 units: 1,000 ETB
+  - 50+ units: 900 ETB
 
-### 1. Individual / Personal Card
-- **Target:** Freelancers, professionals, single users.
-- **Price:** 1,200 ETB per card.
-- **Features:** Premium matte finish, instant profile setup, lifetime digital profile, free delivery in Addis Ababa.
-
-### 2. Bulk / Corporate Orders
-- **Target:** Teams, companies, and organizations.
-- **Pricing Tiers:**
-  - 5-19 cards: 1,100 ETB per unit
-  - 20-49 cards: 1,000 ETB per unit
-  - 50+ cards: 900 ETB per unit
-- **Features:** Custom company branding/logo printing, centralized team management dashboard.
-
-## How It Works
-1. **Order:** Customers contact via WhatsApp or Telegram to choose card style.
-2. **Setup:** The digital profile is linked to the NFC hardware.
-3. **Tap:** Information is shared instantly with any NFC-enabled smartphone (No app required).
-
-## Technical Details
-- **Technology:** Passive NFC (ISO 14443A).
-- **Compatibility:** Works with iOS and Android devices.
-- **Sustainability:** Reduces paper waste by replacing thousands of traditional business cards.
+## Features
+- Premium matte finish hardware.
+- No app required for receivers.
+- Instant profile setup and lifetime digital profile.
