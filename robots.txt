@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Sitemap: https://finedata.et/sitemap.xml
+
+# Points AI crawlers to your machine-readable info
+llm: /llm.txt
