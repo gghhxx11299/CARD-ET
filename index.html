@@ -3,92 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FineData | Premium NFC Digital Business Cards Ethiopia</title>
+    
+    <title>FineData | NFC Digital Business Cards Ethiopia - Tap to Share</title>
+    <meta name="description" content="Upgrade to FineData NFC digital business cards in Ethiopia. One card for life. Tap to share contact info, social media, and more. Best for individuals and corporate teams.">
+    <meta name="keywords" content="NFC Business Card Ethiopia, Digital Business Card Addis Ababa, FineData, Smart Business Card, Contactless Networking Ethiopia">
+    <meta name="author" content="FineData ET">
+    <meta property="og:title" content="FineData | Premium NFC Digital Business Cards Ethiopia">
+    <meta property="og:description" content="The last business card you'll ever buy. Tap and share instantly. Get your single card or bulk corporate order today.">
+    <meta property="og:type" content="website">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Noto+Sans+Ethiopic:wght@400;700;900&display=swap');
-        
         :root { --blue: #2563eb; }
         body { font-family: 'Plus Jakarta Sans', sans-serif; background: #fff; color: #111; scroll-behavior: smooth; overflow-x: hidden; }
-        
         .lang-eth { display: none; }
         body.amharic { font-family: 'Noto Sans Ethiopic', sans-serif; }
         body.amharic .lang-en { display: none; }
         body.amharic .lang-eth { display: block; }
-
-        .text-gray-500 { color: #475569 !important; }
-        .text-gray-400 { color: #334155 !important; }
-
         .glass-nav { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(15px); border-bottom: 1px solid rgba(0,0,0,0.05); }
         .hero-bg { background: radial-gradient(circle at 50% 50%, #f8fafc 0%, #ffffff 100%); }
-        
-        .card-perspective { perspective: 1000px; }
-        .nfc-card {
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-            transform-style: preserve-3d;
-            transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-        }
-        .nfc-card:hover { transform: rotateY(10deg) rotateX(5deg); }
-
+        .nfc-card { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); transition: 0.3s; }
         .video-aspect { position: relative; padding-bottom: 56.25%; height: 0; border-radius: 24px; overflow: hidden; background: #000; }
         .video-aspect iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
-
         .step-card { background: #f8fafc; border: 1px solid #e2e8f0; transition: all 0.3s ease; }
-        .step-card:hover { border-color: #2563eb; transform: translateY(-5px); }
-
-        .whatsapp-float {
-            position: fixed; bottom: 30px; right: 30px; background: #25d366; color: white;
-            width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center;
-            justify-content: center; font-size: 30px; z-index: 100; box-shadow: 0 10px 25px rgba(37,211,102,0.3);
-        }
+        .whatsapp-float { position: fixed; bottom: 30px; right: 30px; background: #25d366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; z-index: 100; box-shadow: 0 10px 25px rgba(37,211,102,0.3); }
+        #bulkModal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 1000; align-items: center; justify-content: center; padding: 20px; backdrop-filter: blur(5px); }
     </style>
 </head>
 <body class="antialiased">
 
-    <a href="https://wa.me/251960375738" class="whatsapp-float" target="_blank">
-        <i class="fa-brands fa-whatsapp"></i>
-    </a>
+    <a href="https://wa.me/251991169817" class="whatsapp-float" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
 
     <nav class="fixed top-0 w-full z-50 glass-nav">
         <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
             <div class="text-xl font-black tracking-tighter uppercase">FINEDATA<span class="text-blue-600">.et</span></div>
             <div class="flex items-center gap-4">
-                <button id="langBtn" onclick="toggleLang()" class="bg-gray-100 text-gray-900 px-5 py-2 rounded-full text-[11px] font-bold uppercase tracking-widest transition-all hover:bg-gray-200">አማርኛ</button>
-                <a href="#order" class="bg-blue-600 text-white px-6 py-2.5 rounded-xl text-xs font-bold uppercase tracking-widest shadow-lg shadow-blue-100 active:scale-95 transition-all">
-                    <span class="lang-en">Order</span><span class="lang-eth">ይዘዙ</span>
-                </a>
+                <button id="langBtn" onclick="toggleLang()" class="bg-gray-100 text-gray-900 px-5 py-2 rounded-full text-[11px] font-bold uppercase transition-all hover:bg-gray-200">አማርኛ</button>
+                <a href="#order" class="bg-blue-600 text-white px-6 py-2.5 rounded-xl text-xs font-bold uppercase tracking-widest shadow-lg shadow-blue-100 active:scale-95 transition-all">Order</a>
             </div>
         </div>
     </nav>
 
     <section class="hero-bg pt-40 pb-20 px-6">
         <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
-            <div>
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 text-blue-600 text-[11px] font-black uppercase tracking-widest mb-6">Professional NFC Solutions</div>
+            <div class="text-center lg:text-left">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 text-blue-600 text-[11px] font-black uppercase tracking-widest mb-6">Modern Networking Ethiopia</div>
                 <h1 class="text-5xl lg:text-7xl font-extrabold leading-[1.1] mb-8 tracking-tight">
-                    <span class="lang-en">Elevate Your <br><span class="text-blue-600">Professional Identity.</span></span>
-                    <span class="lang-eth">የንግድ ግንኙነትዎን <br><span class="text-blue-600">ያዘምኑ።</span></span>
+                    <span class="lang-en">One Card. <br><span class="text-blue-600">Infinite Connections.</span></span>
+                    <span class="lang-eth">አንድ ካርድ። <br><span class="text-blue-600">የማያልቅ ግንኙነት።</span></span>
                 </h1>
-                <p class="text-gray-500 text-lg mb-10 leading-relaxed max-w-lg">
-                    <span class="lang-en">Stop wasting money on paper. One FineData card shares your info instantly with a tap. No apps, no friction, just results.</span>
-                    <span class="lang-eth">በወረቀት ካርድ ላይ ገንዘብዎን አያባክኑ። አንድ የ FineData ካርድ መረጃዎን በአንድ ንክኪ ያጋራል። ምንም አይነት አፕሊኬሽን አይፈልግም።</span>
+                <p class="text-gray-500 text-lg mb-10 leading-relaxed max-w-lg mx-auto lg:mx-0">
+                    Stop carrying stacks of paper. Share your contact info, social media, and portfolio with a single tap. High-quality NFC cards designed for professionals.
                 </p>
-                <a href="#order" class="inline-block bg-gray-900 text-white px-10 py-5 rounded-2xl font-bold uppercase text-xs tracking-widest shadow-xl min-w-[200px] text-center whitespace-nowrap">
-                    <span class="lang-en">Get Started</span><span class="lang-eth">አሁኑኑ ይጀምሩ</span>
-                </a>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                    <a href="#order" class="bg-gray-900 text-white px-10 py-5 rounded-2xl font-bold uppercase text-xs tracking-widest text-center shadow-xl">Get Your Card</a>
+                    <button onclick="openBulk()" class="bg-white border-2 border-gray-900 text-gray-900 px-10 py-5 rounded-2xl font-bold uppercase text-xs tracking-widest text-center">Bulk For Teams</button>
+                </div>
             </div>
-            <div class="card-perspective flex justify-center">
-                <div class="nfc-card w-full max-w-sm aspect-[1.58/1] rounded-[24px] p-10 flex flex-col justify-between text-white border border-white/10 relative overflow-hidden">
-                    <div class="flex justify-between items-start">
-                        <i class="fa-solid fa-wifi rotate-90 text-3xl text-blue-500"></i>
-                        <span class="font-black italic text-xl">FINEDATA</span>
-                    </div>
-                    <div>
-                        <p class="text-2xl font-bold tracking-widest">NFC SMART CARD</p>
-                        <p class="text-[10px] uppercase font-bold text-blue-500 tracking-[0.4em] mt-1">Ethiopia Edition</p>
-                    </div>
+            <div class="flex justify-center">
+                <div class="nfc-card w-full max-w-sm aspect-[1.58/1] rounded-[24px] p-10 flex flex-col justify-between text-white relative overflow-hidden">
+                    <div class="flex justify-between items-start"><i class="fa-solid fa-wifi rotate-90 text-3xl text-blue-500"></i><span class="font-black italic text-xl">FINEDATA</span></div>
+                    <div><p class="text-2xl font-bold tracking-widest">NFC SMART CARD</p><p class="text-[10px] uppercase font-bold text-blue-500 tracking-[0.4em] mt-1">Ethiopia Edition</p></div>
                 </div>
             </div>
         </div>
@@ -96,84 +73,60 @@
 
     <section class="py-24 px-6 bg-white">
         <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl font-black uppercase tracking-tighter mb-4"><span class="lang-en">How It Works</span><span class="lang-eth">እንዴት እንደሚሰራ</span></h2>
-                <div class="w-20 h-1.5 bg-blue-600 mx-auto rounded-full"></div>
-            </div>
+            <div class="text-center mb-16"><h2 class="text-3xl font-black uppercase tracking-tighter mb-4"><span class="lang-en">How It Works</span><span class="lang-eth">እንዴት እንደሚሰራ</span></h2><div class="w-20 h-1.5 bg-blue-600 mx-auto rounded-full"></div></div>
             <div class="grid md:grid-cols-3 gap-8">
-                <div class="step-card p-8 rounded-[32px] text-center">
-                    <div class="w-16 h-16 bg-blue-600 text-white rounded-2xl flex items-center justify-center text-2xl font-black mx-auto mb-6">1</div>
-                    <h3 class="font-bold uppercase tracking-widest mb-3"><span class="lang-en">Order</span><span class="lang-eth">ይዘዙ</span></h3>
-                    <p class="text-sm text-gray-500"><span class="lang-en">Choose quantity and order via WhatsApp/Telegram.</span><span class="lang-eth">የሚፈልጉትን ብዛት ይምረጡና በዋትስአፕ ወይም ቴሌግራም ይዘዙ።</span></p>
-                </div>
-                <div class="step-card p-8 rounded-[32px] text-center">
-                    <div class="w-16 h-16 bg-blue-600 text-white rounded-2xl flex items-center justify-center text-2xl font-black mx-auto mb-6">2</div>
-                    <h3 class="font-bold uppercase tracking-widest mb-3"><span class="lang-en">Setup</span><span class="lang-eth">ያዘጋጁ</span></h3>
-                    <p class="text-sm text-gray-500"><span class="lang-en">Add your contact info and social media links.</span><span class="lang-eth">የስልክ ቁጥርዎን እና ሌሎች መረጃዎችን ያስገቡ።</span></p>
-                </div>
-                <div class="step-card p-8 rounded-[32px] text-center">
-                    <div class="w-16 h-16 bg-blue-600 text-white rounded-2xl flex items-center justify-center text-2xl font-black mx-auto mb-6">3</div>
-                    <h3 class="font-bold uppercase tracking-widest mb-3"><span class="lang-en">Tap</span><span class="lang-eth">ያንኩ</span></h3>
-                    <p class="text-sm text-gray-500"><span class="lang-en">Tap on any smartphone to share instantly.</span><span class="lang-eth">ስልኮች ላይ በማስነካት መረጃዎን በቅጽበት ያጋሩ።</span></p>
-                </div>
+                <div class="step-card p-8 rounded-[32px] text-center"><div class="w-16 h-16 bg-blue-600 text-white rounded-2xl flex items-center justify-center text-2xl font-black mx-auto mb-6">1</div><h3 class="font-bold uppercase mb-3">Order</h3><p class="text-sm text-gray-500">Choose your style and order via Telegram or WhatsApp.</p></div>
+                <div class="step-card p-8 rounded-[32px] text-center"><div class="w-16 h-16 bg-blue-600 text-white rounded-2xl flex items-center justify-center text-2xl font-black mx-auto mb-6">2</div><h3 class="font-bold uppercase mb-3">Setup</h3><p class="text-sm text-gray-500">Receive your card and link your profile in seconds.</p></div>
+                <div class="step-card p-8 rounded-[32px] text-center"><div class="w-16 h-16 bg-blue-600 text-white rounded-2xl flex items-center justify-center text-2xl font-black mx-auto mb-6">3</div><h3 class="font-bold uppercase mb-3">Tap</h3><p class="text-sm text-gray-500">Tap your card on any phone to share your details instantly.</p></div>
             </div>
         </div>
     </section>
 
     <section class="py-24 px-6 bg-gray-50">
         <div class="max-w-7xl mx-auto">
-            <h2 class="text-3xl font-black text-center mb-16 uppercase tracking-tighter"><span class="lang-en">Watch in Action</span><span class="lang-eth">በተግባር ይመልከቱ</span></h2>
+            <h2 class="text-3xl font-black text-center mb-16 uppercase tracking-tighter">Watch in Action</h2>
             <div class="grid lg:grid-cols-2 gap-10">
-                <div class="bg-white p-5 rounded-[32px] shadow-sm">
-                    <div class="video-aspect mb-6"><iframe src="https://www.youtube.com/embed/eWPtt2hLnJk"></iframe></div>
-                    <p class="px-4 font-bold text-sm uppercase text-gray-400 tracking-widest">01. NFC Demo</p>
-                </div>
-                <div class="bg-white p-5 rounded-[32px] shadow-sm">
-                    <div class="video-aspect mb-6"><iframe src="https://www.youtube.com/embed/5XW_wE43y54?si=AK-hw-wBx8slcw9O" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
-                    <p class="px-4 font-bold text-sm uppercase text-gray-400 tracking-widest">
-                        <span class="lang-en">02. NFC Everyday Lifestyle</span>
-                        <span class="lang-eth">02. የNFC ጥቅም በዕለት ተዕለት ኑሮ</span>
-                    </p>
-                </div>
+                <div class="bg-white p-5 rounded-[32px] shadow-sm"><div class="video-aspect mb-6"><iframe src="https://www.youtube.com/embed/eWPtt2hLnJk"></iframe></div><p class="px-4 font-bold text-sm uppercase text-gray-400 tracking-widest">NFC Demo</p></div>
+                <div class="bg-white p-5 rounded-[32px] shadow-sm"><div class="video-aspect mb-6"><iframe src="https://www.youtube.com/embed/5XW_wE43y54"></iframe></div><p class="px-4 font-bold text-sm uppercase text-gray-400 tracking-widest">Everyday Lifestyle</p></div>
             </div>
         </div>
     </section>
 
     <section id="order" class="py-24 px-6 bg-white">
-        <div class="max-w-4xl mx-auto bg-gray-900 rounded-[48px] p-10 md:p-20 text-white relative overflow-hidden">
-            <div class="relative z-10 grid lg:grid-cols-2 gap-16 items-center">
-                <div>
-                    <h2 class="text-4xl font-black mb-6 uppercase tracking-tight"><span class="lang-en">Pricing</span><span class="lang-eth">ዋጋ</span></h2>
-                    <div class="space-y-12">
-                        <div>
-                            <div class="flex justify-between mb-4 font-black text-[10px] uppercase tracking-widest text-gray-500">
-                                <span><span class="lang-en">Quantity</span><span class="lang-eth">ብዛት</span></span>
-                                <span class="text-blue-500 text-xl" id="qNum">1</span>
-                            </div>
-                            <input type="range" min="1" max="50" value="1" id="qRange" oninput="calc()" class="w-full h-1.5 bg-white/10 rounded-lg appearance-none cursor-pointer accent-blue-600">
-                        </div>
-                        <div class="pt-8 border-t border-white/10 flex justify-between items-end">
-                            <div>
-                                <p class="text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-1">Total ETB</p>
-                                <p class="text-5xl font-black" id="totalPrice">1,200</p>
-                            </div>
-                            <p class="text-sm font-bold opacity-60"><span id="unitPrice">1,200</span> ETB / Unit</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="flex flex-col gap-4">
-                    <a href="https://wa.me/251960375738" target="_blank" class="w-full bg-[#25d366] hover:bg-[#1fb355] text-white py-6 rounded-2xl font-black uppercase tracking-widest text-center transition-all"><i class="fa-brands fa-whatsapp text-xl mr-2"></i><span class="lang-en">WhatsApp</span><span class="lang-eth">በዋትስአፕ</span></a>
-                    <a href="https://t.me/finedata_et_bot" class="w-full bg-blue-600 hover:bg-blue-700 text-white py-6 rounded-2xl font-black uppercase tracking-widest text-center transition-all"><i class="fa-brands fa-telegram text-xl mr-2"></i><span class="lang-en">Telegram</span><span class="lang-eth">በቴሌግራም</span></a>
-                    <a href="tel:+251991168917" class="text-center py-4 bg-white/5 rounded-xl border border-white/10 font-bold">+251 991 168 917</a>
-                </div>
+        <div class="max-w-3xl mx-auto bg-gray-900 rounded-[48px] p-12 text-white text-center shadow-2xl">
+            <h2 class="text-4xl font-black mb-4 uppercase tracking-tight">Personal Card</h2>
+            <p class="text-gray-400 mb-8 uppercase text-xs font-bold tracking-widest">Best for Individuals & Freelancers</p>
+            <div class="text-6xl font-black mb-10">1,200 <span class="text-xl text-blue-500">ETB</span></div>
+            <div class="grid sm:grid-cols-2 gap-4 max-w-lg mx-auto">
+                <a href="https://wa.me/251991169817?text=Order%20Single%20Card" target="_blank" class="w-full bg-[#25d366] hover:bg-[#1fb355] text-white py-5 rounded-2xl font-black uppercase tracking-widest text-xs transition-all flex items-center justify-center gap-2"><i class="fa-brands fa-whatsapp text-lg"></i> WhatsApp</a>
+                <a href="https://t.me/finedata_et_bot" class="w-full bg-blue-600 hover:bg-blue-700 text-white py-5 rounded-2xl font-black uppercase tracking-widest text-xs transition-all flex items-center justify-center gap-2"><i class="fa-brands fa-telegram text-lg"></i> Telegram</a>
             </div>
+            <p class="mt-8 font-bold text-gray-500">OR CALL: +251 991 169 817</p>
+            <button onclick="openBulk()" class="mt-8 text-blue-500 font-bold uppercase text-[10px] tracking-widest border-b border-blue-500/30 pb-1">Ordering for a company? Click for Bulk Pricing</button>
         </div>
     </section>
 
+    <div id="bulkModal">
+        <div class="bg-white text-gray-900 p-10 rounded-[40px] max-w-xl w-full relative shadow-2xl">
+            <button onclick="closeBulk()" class="absolute top-6 right-6 text-gray-400 hover:text-black"><i class="fa-solid fa-xmark text-2xl"></i></button>
+            <h2 class="text-3xl font-black mb-2 uppercase tracking-tight">Bulk Pricing</h2>
+            <p class="text-gray-500 text-sm mb-10">Select quantity for corporate branding discount.</p>
+            <div class="mb-12">
+                <div class="flex justify-between mb-4 font-black text-[10px] uppercase tracking-widest text-gray-400"><span>Quantity</span><span class="text-blue-600 text-2xl" id="qNum">10</span></div>
+                <input type="range" min="5" max="100" value="10" id="qRange" oninput="calc()" class="w-full h-2 bg-gray-100 rounded-lg appearance-none cursor-pointer accent-blue-600">
+            </div>
+            <div class="flex justify-between items-end mb-10 pt-8 border-t border-gray-100">
+                <div><p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Total Price</p><p class="text-5xl font-black text-gray-900" id="totalPrice">10,000</p></div>
+                <p class="text-sm font-bold text-blue-600"><span id="unitPrice">1,000</span> ETB / Unit</p>
+            </div>
+            <a href="https://wa.me/251991169817?text=Bulk%20Order%20Inquiry" id="bulkWa" class="block w-full bg-gray-900 text-white text-center py-5 rounded-2xl font-black uppercase text-xs tracking-widest">Get Bulk Quote</a>
+        </div>
+    </div>
+
     <footer class="py-16 text-center border-t border-gray-100">
         <div class="text-xl font-black mb-4 tracking-tighter uppercase">FINEDATA<span class="text-blue-600">.et</span></div>
-        <p class="text-gray-400 text-[10px] font-bold uppercase tracking-widest">Addis Ababa, Ethiopia</p>
-        <p class="mt-8 text-gray-300 text-[10px] font-bold uppercase tracking-widest">&copy; 2025 FineData ET</p>
+        <p class="text-gray-400 text-[10px] font-bold uppercase tracking-widest">Addis Ababa, Ethiopia | +251 991 169 817</p>
+        <p class="mt-8 text-gray-300 text-[10px] font-bold uppercase tracking-widest">&copy; 2026 FineData ET</p>
     </footer>
 
     <script>
@@ -181,12 +134,15 @@
             document.body.classList.toggle('amharic');
             document.getElementById('langBtn').innerText = document.body.classList.contains('amharic') ? "English" : "አማርኛ";
         }
+        function openBulk() { document.getElementById('bulkModal').style.display = 'flex'; }
+        function closeBulk() { document.getElementById('bulkModal').style.display = 'none'; }
         function calc() {
             const q = document.getElementById('qRange').value;
             document.getElementById('qNum').innerText = q;
-            let p = q >= 10 ? 1000 : (q >= 5 ? 1100 : 1200);
+            let p = q >= 50 ? 800 : (q >= 20 ? 900 : 1000);
             document.getElementById('totalPrice').innerText = (q * p).toLocaleString();
             document.getElementById('unitPrice').innerText = p.toLocaleString();
+            document.getElementById('bulkWa').href = `https://wa.me/251991169817?text=Bulk%20Order%20Request:%20${q}%20cards`;
         }
     </script>
 </body>
