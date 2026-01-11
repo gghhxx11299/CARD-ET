@@ -18,7 +18,7 @@
         body.amharic .lang-en { display: none; }
         body.amharic .lang-eth { display: block; }
 
-        /* THE ORIGINAL WORKING 3D EFFECT */
+        /* WORKING 3D EFFECT */
         .card-container { perspective: 1200px; }
         .nfc-card {
             background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
@@ -36,9 +36,11 @@
         .video-aspect { position: relative; padding-bottom: 56.25%; height: 0; border-radius: 20px; overflow: hidden; }
         .video-aspect iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
         
+        /* FIX FOR SQUASHED BUTTONS */
         @media (max-width: 640px) {
             .hero-title { font-size: 2.5rem !important; }
-            .contact-grid { grid-template-columns: 1fr !important; }
+            .contact-grid { grid-template-columns: 1fr !important; gap: 12px !important; }
+            .contact-btn { width: 100% !important; white-space: nowrap; padding: 18px !important; }
         }
     </style>
 </head>
@@ -111,8 +113,8 @@
     </section>
 
     <section class="py-16 px-6 bg-white">
-        <div class="max-w-7xl mx-auto">
-            <h2 class="text-2xl font-black text-center mb-10 uppercase">
+        <div class="max-w-7xl mx-auto text-center">
+            <h2 class="text-2xl font-black mb-10 uppercase">
                 <span class="lang-en">Demos</span><span class="lang-eth">ማሳያዎች</span>
             </h2>
             <div class="grid lg:grid-cols-2 gap-8">
@@ -142,12 +144,16 @@
 
     <section id="order" class="py-16 px-4">
         <div class="max-w-4xl mx-auto bg-gray-900 rounded-[32px] p-10 text-white text-center shadow-2xl">
-            <h2 class="text-3xl font-black mb-10 uppercase">1,200 ETB</h2>
+            <h2 class="text-3xl font-black mb-10 uppercase tracking-tighter">1,200 ETB</h2>
             <div class="contact-grid grid grid-cols-3 gap-3">
-                <a href="https://wa.me/251991168917" class="bg-[#25d366] py-4 rounded-xl font-black text-[10px] uppercase">WhatsApp</a>
-                <a href="https://t.me/finedata_et_bot" class="bg-blue-600 py-4 rounded-xl font-black text-[10px] uppercase">Telegram</a>
-                <a href="tel:+251991168917" class="bg-white text-gray-900 py-4 rounded-xl font-black text-[10px] uppercase">
-                    <span class="lang-en">Call</span><span class="lang-eth">ይደውሉ</span>
+                <a href="https://wa.me/251991168917" class="contact-btn bg-[#25d366] py-5 rounded-xl font-black text-[11px] uppercase flex items-center justify-center gap-2">
+                    <i class="fa-brands fa-whatsapp text-lg"></i> WhatsApp
+                </a>
+                <a href="https://t.me/finedata_et_bot" class="contact-btn bg-blue-600 py-5 rounded-xl font-black text-[11px] uppercase flex items-center justify-center gap-2">
+                    <i class="fa-brands fa-telegram text-lg"></i> Telegram
+                </a>
+                <a href="tel:+251991168917" class="contact-btn bg-white text-gray-900 py-5 rounded-xl font-black text-[11px] uppercase flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-phone"></i> <span class="lang-en">Call Now</span><span class="lang-eth">አሁኑኑ ይደውሉ</span>
                 </a>
             </div>
         </div>
@@ -161,22 +167,13 @@
     <script>
         const card = document.getElementById('card');
         const area = document.getElementById('cardArea');
-
         area.addEventListener('mousemove', (e) => {
             const rect = area.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
-            const rotateX = (y - centerY) / 10;
-            const rotateY = (centerX - x) / 10;
-            card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            const x = (e.clientX - rect.left - rect.width/2) / 10;
+            const y = (e.clientY - rect.top - rect.height/2) / 10;
+            card.style.transform = `rotateX(${-y}deg) rotateY(${x}deg)`;
         });
-
-        area.addEventListener('mouseleave', () => {
-            card.style.transform = `rotateX(0deg) rotateY(0deg)`;
-        });
-
+        area.addEventListener('mouseleave', () => { card.style.transform = `rotateX(0deg) rotateY(0deg)`; });
         function toggleLang() {
             document.body.classList.toggle('amharic');
             document.getElementById('langBtn').innerText = document.body.classList.contains('amharic') ? "English" : "አማርኛ";
