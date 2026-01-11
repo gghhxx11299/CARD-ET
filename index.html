@@ -3,44 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NFC Digital Business Cards Ethiopia | FineData</title>
+    <title>FineData | NFC Business Cards Ethiopia</title>
+    
     <meta name="keywords" content="nfc cards for sale in ethiopia, nfc cards addis abeba, premium nfc cards, pvc nfc cards, digital business cards, nfc card zemenawit, nfc zemenawit">
 
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&family=Noto+Sans+Ethiopic:wght@400;700;900&display=swap');
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background: #fff; overflow-x: hidden; scroll-behavior: smooth; }
+        
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background: #fff; scroll-behavior: smooth; overflow-x: hidden; }
         .lang-eth { display: none; }
         body.amharic { font-family: 'Noto Sans Ethiopic', sans-serif; }
         body.amharic .lang-en { display: none; }
         body.amharic .lang-eth { display: block; }
 
-        .tilt-container { perspective: 1000px; }
+        /* THE ORIGINAL WORKING 3D EFFECT */
+        .card-container { perspective: 1200px; }
         .nfc-card {
             background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-            border-radius: 20px;
             transform-style: preserve-3d;
             transition: transform 0.1s ease;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
             animation: float 4s ease-in-out infinite;
         }
-        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
-        .video-container { position: relative; padding-bottom: 56.25%; height: 0; border-radius: 15px; overflow: hidden; }
-        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotateX(0) rotateY(0); }
+            50% { transform: translateY(-15px) rotateX(2deg) rotateY(-2deg); }
+        }
+        .nfc-card:hover { animation: none; }
+
+        .video-aspect { position: relative; padding-bottom: 56.25%; height: 0; border-radius: 20px; overflow: hidden; }
+        .video-aspect iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
         
         @media (max-width: 640px) {
             .hero-title { font-size: 2.5rem !important; }
-            .grid-mobile { grid-template-columns: 1fr !important; }
+            .contact-grid { grid-template-columns: 1fr !important; }
         }
     </style>
 </head>
 <body class="antialiased">
 
-    <nav class="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-md h-16 flex items-center justify-between px-6 border-b">
+    <nav class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md h-16 flex items-center justify-between px-6 border-b">
         <div class="text-lg font-black uppercase">FINEDATA<span class="text-blue-600">.et</span></div>
-        <div class="flex gap-2">
-            <button onclick="toggleLang()" id="langBtn" class="bg-gray-100 px-3 py-2 rounded-full text-[10px] font-bold uppercase">አማርኛ</button>
+        <div class="flex items-center gap-2">
+            <button id="langBtn" onclick="toggleLang()" class="bg-gray-100 px-3 py-2 rounded-full text-[10px] font-bold uppercase">አማርኛ</button>
             <a href="#order" class="bg-blue-600 text-white px-4 py-2 rounded-xl text-[10px] font-bold uppercase tracking-widest">
                 <span class="lang-en">Order</span><span class="lang-eth">ይዘዙ</span>
             </a>
@@ -48,30 +55,30 @@
     </nav>
 
     <header class="pt-24 pb-12 px-6">
-        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-10 items-center">
-            <div>
-                <h1 class="hero-title text-5xl lg:text-7xl font-extrabold mb-6 tracking-tight">
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
+            <div class="text-center lg:text-left">
+                <h1 class="hero-title text-5xl lg:text-7xl font-extrabold leading-tight mb-8 tracking-tight">
                     <span class="lang-en">The Best NFC <br><span class="text-blue-600">Business Cards.</span></span>
                     <span class="lang-eth">ምርጥ የኤንኤፍሲ <br><span class="text-blue-600">ዲጂታል ካርዶች።</span></span>
                 </h1>
-                <p class="text-gray-500 mb-8 max-w-md">
-                    <span class="lang-en">Premium PVC NFC cards for sale in Ethiopia. Touch or hover the card to see 3D quality.</span>
-                    <span class="lang-eth">ጥራት ያላቸው የፒቪሲ ኤንኤፍሲ ካርዶች በኢትዮጵያ። የካርዱን ጥራት በ3ዲ ይመልከቱ።</span>
+                <p class="text-gray-500 text-base mb-10 max-w-lg mx-auto lg:mx-0">
+                    <span class="lang-en">FineData provides high-quality PVC NFC cards in Addis Abeba. Touch the card to see the 3D depth.</span>
+                    <span class="lang-eth">ፋይን ዳታ ጥራት ያላቸውን የፒቪሲ ኤንኤፍሲ ካርዶችን በአዲስ አበባ ያቀርባል። ካርዱን በመንካት ጥራቱን ይመልከቱ።</span>
                 </p>
                 <a href="#order" class="bg-gray-900 text-white px-8 py-4 rounded-xl font-bold uppercase text-[10px] tracking-widest shadow-xl">
-                    <span class="lang-en">Get Started</span><span class="lang-eth">አሁኑኑ ይጀምሩ</span>
+                    <span class="lang-en">Buy Card</span><span class="lang-eth">ካርድ ይግዙ</span>
                 </a>
             </div>
 
-            <div class="tilt-container" id="container">
-                <div id="card" class="nfc-card w-full max-w-sm aspect-[1.58/1] p-8 flex flex-col justify-between text-white mx-auto cursor-pointer">
-                    <div class="flex justify-between items-start" style="transform: translateZ(40px)">
+            <div class="flex justify-center card-container" id="cardArea">
+                <div id="card" class="nfc-card w-full max-w-sm aspect-[1.58/1] rounded-[24px] p-8 flex flex-col justify-between text-white relative cursor-pointer">
+                    <div class="flex justify-between items-start" style="transform: translateZ(50px)">
                         <i class="fa-solid fa-wifi rotate-90 text-2xl text-blue-500"></i>
-                        <span class="font-black italic">FINEDATA</span>
+                        <span class="font-black italic text-lg">FINEDATA</span>
                     </div>
-                    <div style="transform: translateZ(20px)">
-                        <p class="text-xl font-bold tracking-widest uppercase">SMART CARD</p>
-                        <p class="text-[9px] text-blue-500 font-bold uppercase tracking-[0.3em] mt-1">Ethiopia Edition</p>
+                    <div style="transform: translateZ(30px)">
+                        <p class="text-xl font-bold tracking-widest uppercase">Smart Card</p>
+                        <p class="text-[9px] uppercase font-bold text-blue-500 tracking-[0.4em] mt-1">Ethiopia Edition</p>
                     </div>
                 </div>
             </div>
@@ -84,20 +91,20 @@
                 <span class="lang-en">How It Works</span><span class="lang-eth">እንዴት እንደሚሰራ</span>
             </h2>
             <div class="grid md:grid-cols-3 gap-6">
-                <div class="bg-white p-6 rounded-2xl shadow-sm text-center">
+                <div class="bg-white p-8 rounded-2xl shadow-sm text-center">
                     <div class="text-blue-600 text-2xl font-black mb-2">01</div>
-                    <p class="font-bold text-sm uppercase mb-1"><span class="lang-en">Order</span><span class="lang-eth">ይዘዙ</span></p>
-                    <p class="text-xs text-gray-500"><span class="lang-en">Choose your card design.</span><span class="lang-eth">የካርድዎን ዲዛይን ይምረጡ።</span></p>
+                    <p class="font-bold text-sm uppercase mb-1"><span class="lang-en">Order</span><span class="lang-eth">ማዘዝ</span></p>
+                    <p class="text-xs text-gray-500"><span class="lang-en">Pick your design.</span><span class="lang-eth">ዲዛይንዎን ይምረጡ።</span></p>
                 </div>
-                <div class="bg-white p-6 rounded-2xl shadow-sm text-center">
+                <div class="bg-white p-8 rounded-2xl shadow-sm text-center">
                     <div class="text-blue-600 text-2xl font-black mb-2">02</div>
-                    <p class="font-bold text-sm uppercase mb-1"><span class="lang-en">Setup</span><span class="lang-eth">ያዘጋጁ</span></p>
-                    <p class="text-xs text-gray-500"><span class="lang-en">Add your contact details.</span><span class="lang-eth">መረጃዎን ያስገቡ።</span></p>
+                    <p class="font-bold text-sm uppercase mb-1"><span class="lang-en">Setup</span><span class="lang-eth">ማዘጋጀት</span></p>
+                    <p class="text-xs text-gray-500"><span class="lang-en">Add your contact info.</span><span class="lang-eth">መረጃዎን ያስገቡ።</span></p>
                 </div>
-                <div class="bg-white p-6 rounded-2xl shadow-sm text-center">
+                <div class="bg-white p-8 rounded-2xl shadow-sm text-center">
                     <div class="text-blue-600 text-2xl font-black mb-2">03</div>
-                    <p class="font-bold text-sm uppercase mb-1"><span class="lang-en">Tap</span><span class="lang-eth">ይንኩ</span></p>
-                    <p class="text-xs text-gray-500"><span class="lang-en">Share your info instantly.</span><span class="lang-eth">መረጃዎን ወዲያውኑ ያጋሩ።</span></p>
+                    <p class="font-bold text-sm uppercase mb-1"><span class="lang-en">Tap</span><span class="lang-eth">መንካት</span></p>
+                    <p class="text-xs text-gray-500"><span class="lang-en">Share instantly.</span><span class="lang-eth">ወዲያውኑ ያጋሩ።</span></p>
                 </div>
             </div>
         </div>
@@ -106,11 +113,11 @@
     <section class="py-16 px-6 bg-white">
         <div class="max-w-7xl mx-auto">
             <h2 class="text-2xl font-black text-center mb-10 uppercase">
-                <span class="lang-en">Demo Videos</span><span class="lang-eth">የማሳያ ቪዲዮዎች</span>
+                <span class="lang-en">Demos</span><span class="lang-eth">ማሳያዎች</span>
             </h2>
-            <div class="grid lg:grid-cols-2 gap-6">
-                <div class="video-container shadow-xl"><iframe src="https://www.youtube.com/embed/eWPtt2hLnJk"></iframe></div>
-                <div class="video-container shadow-xl"><iframe src="https://www.youtube.com/embed/5XW_wE43y54"></iframe></div>
+            <div class="grid lg:grid-cols-2 gap-8">
+                <div class="video-aspect shadow-2xl"><iframe src="https://www.youtube.com/embed/eWPtt2hLnJk"></iframe></div>
+                <div class="video-aspect shadow-2xl"><iframe src="https://www.youtube.com/embed/5XW_wE43y54"></iframe></div>
             </div>
         </div>
     </section>
@@ -118,34 +125,25 @@
     <section class="py-16 px-6 bg-gray-50">
         <div class="max-w-3xl mx-auto">
             <h2 class="text-2xl font-black text-center mb-10 uppercase">
-                <span class="lang-en">Questions & Answers</span><span class="lang-eth">ተደጋጋሚ ጥያቄዎች</span>
+                <span class="lang-en">FAQ</span><span class="lang-eth">ጥያቄዎች</span>
             </h2>
             <div class="space-y-4">
-                <div class="bg-white p-6 rounded-xl border border-gray-100">
-                    <p class="font-bold mb-2"><span class="lang-en">Do I need an app?</span><span class="lang-eth">አፕሊኬሽን ያስፈልገኛል?</span></p>
-                    <p class="text-sm text-gray-500"><span class="lang-en">No, the other person doesn't need an app to receive your info.</span><span class="lang-eth">አይ፣ መረጃዎን ለሚቀበለው ሰው ምንም አይነት አፕሊኬሽን አያስፈልገውም።</span></p>
+                <div class="bg-white p-6 rounded-xl shadow-sm">
+                    <p class="font-bold mb-1"><span class="lang-en">Need an app?</span><span class="lang-eth">አፕሊኬሽን ያስፈልጋል?</span></p>
+                    <p class="text-sm text-gray-500"><span class="lang-en">No app required.</span><span class="lang-eth">ምንም አይነት አፕሊኬሽን አያስፈልግም።</span></p>
                 </div>
-                <div class="bg-white p-6 rounded-xl border border-gray-100">
-                    <p class="font-bold mb-2"><span class="lang-en">How long does delivery take?</span><span class="lang-eth">ማድረስ ምን ያህል ጊዜ ይወስዳል?</span></p>
-                    <p class="text-sm text-gray-500"><span class="lang-en">We deliver within 24 hours in Addis Ababa.</span><span class="lang-eth">አዲስ አበባ ውስጥ በ24 ሰዓት ውስጥ እናደርሳለን።</span></p>
-                </div>
-                <div class="bg-white p-6 rounded-xl border border-gray-100">
-                    <p class="font-bold mb-2"><span class="lang-en">Is it secure?</span><span class="lang-eth">ደህንነቱ የተጠበቀ ነው?</span></p>
-                    <p class="text-sm text-gray-500"><span class="lang-en">Yes, it only shares the info you choose to publicize.</span><span class="lang-eth">አዎ፣ እርስዎ እንዲታይ የፈለጉትን መረጃ ብቻ ነው የሚያጋራው።</span></p>
+                <div class="bg-white p-6 rounded-xl shadow-sm">
+                    <p class="font-bold mb-1"><span class="lang-en">Delivery?</span><span class="lang-eth">ማድረስ?</span></p>
+                    <p class="text-sm text-gray-500"><span class="lang-en">24h in Addis.</span><span class="lang-eth">በ24 ሰዓት ውስጥ አዲስ አበባ።</span></p>
                 </div>
             </div>
         </div>
     </section>
 
     <section id="order" class="py-16 px-4">
-        <div class="max-w-4xl mx-auto bg-gray-900 rounded-[32px] p-10 text-white text-center">
-            <h2 class="text-3xl font-black mb-4 uppercase">
-                <span class="lang-en">Smart Card</span><span class="lang-eth">ስማርት ካርድ</span>
-            </h2>
-            <p class="text-blue-500 font-bold mb-8 text-xs uppercase tracking-widest">
-                <span class="lang-en">1,200 ETB + 200 ETB Delivery</span><span class="lang-eth">1,200 ብር + 200 ብር ማድረሻ</span>
-            </p>
-            <div class="grid-mobile grid grid-cols-3 gap-3">
+        <div class="max-w-4xl mx-auto bg-gray-900 rounded-[32px] p-10 text-white text-center shadow-2xl">
+            <h2 class="text-3xl font-black mb-10 uppercase">1,200 ETB</h2>
+            <div class="contact-grid grid grid-cols-3 gap-3">
                 <a href="https://wa.me/251991168917" class="bg-[#25d366] py-4 rounded-xl font-black text-[10px] uppercase">WhatsApp</a>
                 <a href="https://t.me/finedata_et_bot" class="bg-blue-600 py-4 rounded-xl font-black text-[10px] uppercase">Telegram</a>
                 <a href="tel:+251991168917" class="bg-white text-gray-900 py-4 rounded-xl font-black text-[10px] uppercase">
@@ -155,23 +153,29 @@
         </div>
     </section>
 
-    <footer class="py-10 text-center text-gray-400 text-[9px] font-bold uppercase border-t">
+    <footer class="py-12 text-center text-gray-400 text-[9px] font-bold uppercase border-t">
         FineData Addis Abeba | +251 991 168 917
         <div class="hidden">nfc cards for sale in ethiopia, nfc cards addis abeba, premium nfc cards, pvc nfc cards, digital business cards, nfc card zemenawit, nfc zemenawit</div>
     </footer>
 
     <script>
         const card = document.getElementById('card');
-        const container = document.getElementById('container');
+        const area = document.getElementById('cardArea');
 
-        container.addEventListener('mousemove', (e) => {
-            let rect = container.getBoundingClientRect();
-            let x = (e.clientX - rect.left) / rect.width - 0.5;
-            let y = (e.clientY - rect.top) / rect.height - 0.5;
-            card.style.transform = `rotateX(${y * -25}deg) rotateY(${x * 25}deg)`;
+        area.addEventListener('mousemove', (e) => {
+            const rect = area.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            const rotateX = (y - centerY) / 10;
+            const rotateY = (centerX - x) / 10;
+            card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
         });
 
-        container.addEventListener('mouseleave', () => { card.style.transform = `rotateX(0deg) rotateY(0deg)`; });
+        area.addEventListener('mouseleave', () => {
+            card.style.transform = `rotateX(0deg) rotateY(0deg)`;
+        });
 
         function toggleLang() {
             document.body.classList.toggle('amharic');
