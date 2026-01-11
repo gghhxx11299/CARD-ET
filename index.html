@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     
     <title>NFC Digital Business Cards Ethiopia | FineData Addis Ababa</title>
     <meta name="description" content="Premium PVC NFC cards for sale in Ethiopia. Tap to share contacts instantly. 200 ETB delivery in Addis Ababa. Best digital business cards.">
@@ -14,24 +14,23 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Noto+Sans+Ethiopic:wght@400;700;900&display=swap');
         
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background: #fff; color: #111; scroll-behavior: smooth; overflow-x: hidden; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background: #fff; color: #111; scroll-behavior: smooth; overflow-x: hidden; width: 100%; }
         .lang-eth { display: none; }
         body.amharic { font-family: 'Noto Sans Ethiopic', sans-serif; }
         body.amharic .lang-en { display: none; }
         body.amharic .lang-eth { display: block; }
 
-        /* 3D FLIP ENGINE */
-        .card-perspective { perspective: 1200px; }
+        /* 3D FLIP ENGINE FIX */
+        .card-perspective { perspective: 1000px; width: 100%; max-width: 340px; margin: 0 auto; height: 215px; }
         .card-inner {
             position: relative;
             width: 100%;
-            max-width: 380px;
-            aspect-ratio: 1.58/1;
-            transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            height: 100%;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
             transform-style: preserve-3d;
-            cursor: pointer;
         }
-        .card-perspective:hover .card-inner, .card-inner.flipped { transform: rotateY(180deg); }
+        /* Mobile/Desktop Flip Trigger */
+        .card-inner.is-flipped { transform: rotateY(180deg); }
 
         .card-face {
             position: absolute;
@@ -39,135 +38,134 @@
             width: 100%;
             height: 100%;
             backface-visibility: hidden;
-            border-radius: 24px;
-            padding: 30px;
+            border-radius: 20px;
+            padding: 25px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
         }
 
-        /* FRONT FACE (UV DARK) */
-        .card-front {
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-            color: white;
-            overflow: hidden;
-        }
-        .card-front::after {
-            content: '';
-            position: absolute;
-            top: -50%; left: -50%; width: 200%; height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.05), transparent);
-            transform: rotate(45deg);
-            animation: shimmer 5s infinite;
-        }
+        .card-front { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: white; }
+        .card-back { background: #ffffff; color: #0f172a; transform: rotateY(180deg); border: 1px solid #e2e8f0; align-items: center; justify-content: center; text-align: center; }
 
-        /* BACK FACE (CLEAN) */
-        .card-back {
-            background: #ffffff;
-            color: #0f172a;
-            transform: rotateY(180deg);
-            border: 1px solid #e2e8f0;
-            align-items: center;
-            justify-content: center;
-        }
-
-        @keyframes shimmer {
-            0% { transform: translateX(-100%) rotate(45deg); }
-            100% { transform: translateX(100%) rotate(45deg); }
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
-        }
-        .floating { animation: float 4s ease-in-out infinite; }
-
-        .glass-nav { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(15px); border-bottom: 1px solid rgba(0,0,0,0.05); }
+        .video-aspect { position: relative; padding-bottom: 56.25%; height: 0; border-radius: 20px; overflow: hidden; background: #000; }
+        .video-aspect iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+        
+        .glass-nav { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(0,0,0,0.05); }
 
         @media (max-width: 640px) {
-            .hero-title { font-size: 2.75rem !important; }
+            .hero-title { font-size: 2.5rem !important; line-height: 1.1; }
+            .section-padding { padding-top: 4rem; padding-bottom: 4rem; }
             .contact-grid { grid-template-columns: 1fr !important; gap: 10px; }
+            .nav-btn { padding: 8px 12px !important; font-size: 10px !important; }
         }
+
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+        .floating { animation: float 4s ease-in-out infinite; }
     </style>
 </head>
 <body class="antialiased">
 
-    <nav class="fixed top-0 w-full z-50 glass-nav h-20 flex items-center justify-between px-6">
-        <div class="text-xl font-black uppercase tracking-tighter">FINEDATA<span class="text-blue-600">.et</span></div>
-        <div class="flex gap-3">
-            <button onclick="toggleLang()" id="langBtn" class="bg-gray-100 px-4 py-2 rounded-full text-[10px] font-bold uppercase">አማርኛ</button>
-            <a href="#order" class="bg-blue-600 text-white px-5 py-2.5 rounded-xl text-[10px] font-bold uppercase tracking-widest shadow-lg">Order Now</a>
+    <nav class="fixed top-0 w-full z-50 glass-nav h-16 flex items-center justify-between px-4 sm:px-8">
+        <div class="text-lg font-black uppercase tracking-tighter">FINEDATA<span class="text-blue-600">.et</span></div>
+        <div class="flex gap-2">
+            <button onclick="toggleLang()" id="langBtn" class="nav-btn bg-gray-100 px-3 py-2 rounded-full text-[10px] font-bold uppercase">አማርኛ</button>
+            <a href="#order" class="nav-btn bg-blue-600 text-white px-4 py-2 rounded-xl text-[10px] font-bold uppercase">Order</a>
         </div>
     </nav>
 
-    <header class="pt-32 pb-20 px-6 hero-bg min-h-screen flex items-center">
-        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+    <header class="pt-24 pb-12 px-6 hero-bg">
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-10 items-center">
             <div class="text-center lg:text-left">
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 text-blue-600 text-[10px] font-black uppercase tracking-widest mb-6">
-                    <i class="fa-solid fa-truck-fast"></i> <span class="lang-en">NFC Cards for Sale in Ethiopia</span><span class="lang-eth">ኤንኤፍሲ ካርዶች በኢትዮጵያ</span>
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 text-blue-600 text-[10px] font-black uppercase mb-4">
+                    <i class="fa-solid fa-star"></i> <span class="lang-en">Premium PVC NFC Cards</span><span class="lang-eth">ጥራት ያላቸው የኤንኤፍሲ ካርዶች</span>
                 </div>
-                <h1 class="hero-title text-5xl lg:text-7xl font-extrabold leading-[1.1] mb-8 tracking-tight">
-                    <span class="lang-en">Modern <span class="text-blue-600">Smart Cards</span> For Pros.</span>
-                    <span class="lang-eth">ዘመናዊ <span class="text-blue-600">ስማርት ካርዶች</span> ለባለሙያዎች።</span>
+                <h1 class="hero-title text-5xl lg:text-7xl font-extrabold mb-6 tracking-tight">
+                    <span class="lang-en">The Best NFC <br><span class="text-blue-600">Business Cards.</span></span>
+                    <span class="lang-eth">ምርጥ የኤንኤፍሲ <br><span class="text-blue-600">ዲጂታል ካርዶች።</span></span>
                 </h1>
-                <p class="text-gray-500 text-lg mb-10 leading-relaxed max-w-md mx-auto lg:mx-0">
-                    <span class="lang-en">The most premium PVC NFC cards in Addis Abeba. Tap to share or scan the back.</span>
-                    <span class="lang-eth">በአዲስ አበባ ውስጥ ምርጥ የፒቪሲ ኤንኤፍሲ ካርዶች። መረጃዎን በንክኪ ያጋሩ።</span>
+                <p class="text-gray-500 text-base mb-8 max-w-md mx-auto lg:mx-0">
+                    <span class="lang-en">FineData is Ethiopia's #1 digital card provider. Tap the card to flip it and see the back.</span>
+                    <span class="lang-eth">ፋይን ዳታ በኢትዮጵያ ቀዳሚ የዲጂታል ካርድ አቅራቢ ነው። ካርዱን በመንካት ጀርባውን ይመልከቱ።</span>
                 </p>
-                <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                    <a href="#order" class="bg-gray-900 text-white px-10 py-5 rounded-2xl font-bold uppercase text-[11px] tracking-widest shadow-2xl">Get Yours Today</a>
+                <div class="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
+                    <a href="#order" class="bg-gray-900 text-white px-8 py-4 rounded-xl font-bold uppercase text-[10px] tracking-widest shadow-xl">Buy Now</a>
                 </div>
             </div>
 
-            <div class="flex justify-center card-perspective">
-                <div class="card-inner floating" onclick="this.classList.toggle('flipped')">
+            <div class="card-perspective">
+                <div class="card-inner floating" id="nfcCard" onclick="this.classList.toggle('is-flipped')">
                     <div class="card-face card-front">
                         <div class="flex justify-between items-start">
-                            <i class="fa-solid fa-wifi rotate-90 text-3xl text-blue-500"></i>
-                            <span class="font-black italic text-xl">FINEDATA</span>
+                            <i class="fa-solid fa-wifi rotate-90 text-2xl text-blue-500"></i>
+                            <span class="font-black italic text-lg">FINEDATA</span>
                         </div>
                         <div>
-                            <p class="text-2xl font-bold tracking-widest">SMART CARD</p>
-                            <p class="text-[10px] uppercase font-bold text-blue-500 tracking-[0.4em] mt-1">Ethiopia Edition</p>
+                            <p class="text-xl font-bold tracking-widest uppercase">SMART CARD</p>
+                            <p class="text-[9px] uppercase font-bold text-blue-500 tracking-[0.3em] mt-1">Ethiopia Edition</p>
                         </div>
                     </div>
                     <div class="card-face card-back">
-                        <div class="w-24 h-24 bg-gray-50 rounded-2xl flex items-center justify-center border border-gray-100 mb-4">
-                            <i class="fa-solid fa-qrcode text-5xl text-gray-200"></i>
+                        <div class="w-20 h-20 bg-gray-50 rounded-xl flex items-center justify-center border border-gray-100 mb-3">
+                            <i class="fa-solid fa-qrcode text-4xl text-gray-200"></i>
                         </div>
-                        <p class="text-[9px] font-bold text-gray-400 uppercase tracking-[0.2em] mb-1">Contact Support</p>
-                        <p class="text-xl font-black text-gray-900">+251 991 168 917</p>
+                        <p class="text-[8px] font-bold text-gray-400 uppercase tracking-widest mb-1">Contact Support</p>
+                        <p class="text-lg font-black text-gray-900">+251 991 168 917</p>
                     </div>
                 </div>
             </div>
         </div>
     </header>
 
-    <section id="order" class="py-24 px-6 bg-white">
-        <div class="max-w-4xl mx-auto bg-gray-900 rounded-[48px] p-12 text-white text-center shadow-2xl">
-            <h2 class="text-4xl font-black mb-4 uppercase tracking-tight">Personal NFC Card</h2>
-            <p class="text-blue-500 mb-8 uppercase text-xs font-bold tracking-widest">+200 ETB Delivery Addis Ababa</p>
-            <div class="text-6xl font-black mb-12 text-white">1,200 <span class="text-2xl text-blue-600">ETB</span></div>
-            
-            <div class="contact-grid grid grid-cols-1 sm:grid-cols-3 gap-4">
-                <a href="https://wa.me/251991168917" class="bg-[#25d366] py-5 rounded-2xl font-black uppercase text-xs flex items-center justify-center gap-2">
-                    <i class="fa-brands fa-whatsapp text-lg"></i> WhatsApp
-                </a>
-                <a href="https://t.me/finedata_et_bot" class="bg-blue-600 py-5 rounded-2xl font-black uppercase text-xs flex items-center justify-center gap-2">
-                    <i class="fa-brands fa-telegram text-lg"></i> Telegram
-                </a>
-                <a href="tel:+251991168917" class="bg-white text-gray-900 py-5 rounded-2xl font-black uppercase text-xs flex items-center justify-center gap-2">
-                    <i class="fa-solid fa-phone text-lg"></i> <span class="lang-en">Call Now</span><span class="lang-eth">ይደውሉ</span>
-                </a>
+    <section class="py-16 px-6 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-12"><h2 class="text-2xl font-black uppercase">How It Works</h2><div class="w-12 h-1 bg-blue-600 mx-auto mt-2"></div></div>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-slate-50 p-8 rounded-3xl text-center">
+                    <div class="w-10 h-10 bg-blue-600 text-white rounded-lg flex items-center justify-center font-black mx-auto mb-4">1</div>
+                    <h3 class="font-bold uppercase text-sm mb-2">Order</h3>
+                    <p class="text-xs text-gray-500">Select your card style and provide your details.</p>
+                </div>
+                <div class="bg-slate-50 p-8 rounded-3xl text-center">
+                    <div class="w-10 h-10 bg-blue-600 text-white rounded-lg flex items-center justify-center font-black mx-auto mb-4">2</div>
+                    <h3 class="font-bold uppercase text-sm mb-2">Setup</h3>
+                    <p class="text-xs text-gray-500">We program your card with your social and business links.</p>
+                </div>
+                <div class="bg-slate-50 p-8 rounded-3xl text-center">
+                    <div class="w-10 h-10 bg-blue-600 text-white rounded-lg flex items-center justify-center font-black mx-auto mb-4">3</div>
+                    <h3 class="font-bold uppercase text-sm mb-2">Tap</h3>
+                    <p class="text-xs text-gray-500">Tap any modern phone to share your info instantly.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <footer class="py-16 text-center border-t border-gray-100">
-        <div class="text-xl font-black mb-4 tracking-tighter">FINEDATA<span class="text-blue-600">.et</span></div>
-        <p class="text-gray-400 text-[10px] font-bold uppercase tracking-widest">Addis Ababa, Ethiopia | +251 991 168 917</p>
-        <div class="hidden">Keywords: nfc cards for sale in ethiopia, nfc cards addis abeba, premium nfc cards, pvc nfc cards, digital business cards, nfc card zemenawit, nfc zemenawit</div>
+    <section class="py-16 px-6 bg-gray-50">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-2xl font-black text-center mb-12 uppercase">Demo Videos</h2>
+            <div class="grid lg:grid-cols-2 gap-8">
+                <div class="bg-white p-4 rounded-3xl shadow-sm"><div class="video-aspect"><iframe src="https://www.youtube.com/embed/eWPtt2hLnJk"></iframe></div></div>
+                <div class="bg-white p-4 rounded-3xl shadow-sm"><div class="video-aspect"><iframe src="https://www.youtube.com/embed/5XW_wE43y54"></iframe></div></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="order" class="py-16 px-4">
+        <div class="max-w-4xl mx-auto bg-gray-900 rounded-[32px] p-8 sm:p-12 text-white text-center">
+            <h2 class="text-2xl sm:text-3xl font-black mb-4 uppercase">Personal Smart Card</h2>
+            <div class="text-5xl font-black mb-10">1,200 <span class="text-xl text-blue-600">ETB</span></div>
+            <div class="contact-grid grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <a href="https://wa.me/251991168917" class="bg-[#25d366] py-4 rounded-xl font-black text-[10px] uppercase">WhatsApp</a>
+                <a href="https://t.me/finedata_et_bot" class="bg-blue-600 py-4 rounded-xl font-black text-[10px] uppercase">Telegram Bot</a>
+                <a href="tel:+251991168917" class="bg-white text-gray-900 py-4 rounded-xl font-black text-[10px] uppercase">Call Now</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-12 text-center border-t text-gray-400 text-[9px] font-bold uppercase">
+        FineData Addis Abeba | +251 991 168 917
+        <div style="display:none">nfc cards for sale in ethiopia, nfc cards addis abeba, premium nfc cards, pvc nfc cards, digital business cards, nfc card zemenawit, nfc zemenawit</div>
     </footer>
 
     <script>
